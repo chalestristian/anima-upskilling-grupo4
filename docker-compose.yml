@@ -1,0 +1,45 @@
+version: '3'
+services:
+  service-postgres:
+    image: postgres
+    restart: always
+    container_name: service-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 54321:54321
+    networks:
+      - anima-network
+
+  service-rabbitmq:
+    container_name: service-rabbitmq
+    image: rabbitmq
+    restart: always
+    networks:
+      - anima-network
+
+  service-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: service-api
+    restart: always
+    ports:
+      - 5100:5100 
+    depends_on:
+      - postgres 
+    networks:
+      - anima-network
+    environment:
+      - DATABASE_URL="Host=service-postgres;Port=5432;Database=UpskillingGrupo4Final;Username=postgres;Password=postgres"
+
+volumes:
+  postgres_data:
+
+networks: 
+  anima-network:
+    driver: bridge

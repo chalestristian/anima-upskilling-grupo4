@@ -1,4 +1,6 @@
 /.vs
 /.vscode
+/api/.vs
+/api/.vscode
 /api/obj
 /api/bin

@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - 54321:54321
+      - 54321:5432
     networks:
       - anima-network
 
@@ -31,11 +31,9 @@ services:
     ports:
       - 5100:5100 
     depends_on:
-      - postgres 
+      - service-postgres 
     networks:
       - anima-network
-    environment:
-      - DATABASE_URL="Host=service-postgres;Port=5432;Database=UpskillingGrupo4Final;Username=postgres;Password=postgres"
 
 volumes:
   postgres_data:

@@ -35,6 +35,17 @@ services:
     networks:
       - anima-network
 
+  service-identity:
+    build:
+      context: ./identity
+      dockerfile: Dockerfile
+    container_name: service-identity
+    restart: always
+    ports:
+      - 5200:5200
+    networks:
+      - anima-network
+
 volumes:
   postgres_data:
 

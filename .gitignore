@@ -4,3 +4,5 @@
 /api/.vscode
 /api/obj
 /api/bin
+/identity/obj
+/identity/bin

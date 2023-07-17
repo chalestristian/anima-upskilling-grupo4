@@ -15,12 +15,17 @@ Para rodar as migrations acesse o container da api e execute:
 Para logar na API é necessário uma AppKey e uma SecretKey, estes dados ficam na tabela Aplicacao de acordo com a aplicação que vai consumir a API.
 
 A API poderá ser acessada como:
-'http://localhost:5100'
+http://localhost:5100
 
 O banco de dados, se precisar acessar pelo Dbeaver para consultar os dados, utilize com os dados:
-Host: localhost
-Port: 54321
-Usuário: postgres
-Senha: postgres
-Banco: UpskillingGrupo4Final
+
+`Host: localhost`
+
+`Port: 54321`
+
+`Usuário: postgres`
+
+`Senha: postgres`
+
+`Banco: UpskillingGrupo4Final`
 

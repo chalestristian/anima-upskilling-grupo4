@@ -29,3 +29,8 @@ O banco de dados, se precisar acessar pelo Dbeaver para consultar os dados, util
 
 `Banco: UpskillingGrupo4Final`
 
+# Arquitetura da comunicação entre os serviços
+![Screenshot_1](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/aca016e9-d73e-43e0-8062-93b206fcb15d)
+
+
+

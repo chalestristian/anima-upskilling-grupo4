@@ -6,3 +6,5 @@
 /api/bin
 /identity/obj
 /identity/bin
+/api.Tests/bin
+/api.Tests/obj

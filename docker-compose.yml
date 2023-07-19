@@ -32,6 +32,7 @@ services:
       - 5100:5100 
     depends_on:
       - service-postgres 
+      - service-identity 
     networks:
       - anima-network
 

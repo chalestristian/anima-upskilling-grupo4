@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj": {}
+    "D:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj": {}
   },
   "projects": {
-    "d:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj": {
+    "D:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj",
+        "projectUniqueName": "D:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj",
         "projectName": "identity",
-        "projectPath": "d:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj",
+        "projectPath": "D:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\identity.csproj",
         "packagesPath": "C:\\Users\\multi\\.nuget\\packages\\",
-        "outputPath": "d:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\obj\\",
+        "outputPath": "D:\\code\\Ânima\\Upskilling .Net\\Trabalhos\\anima-upskilling-grupo4\\identity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\multi\\AppData\\Roaming\\NuGet\\NuGet.Config",

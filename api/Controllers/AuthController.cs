@@ -10,6 +10,7 @@ using api.Data;
 
 namespace api.Controllers
 {
+    /*
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -60,4 +61,5 @@ namespace api.Controllers
             return tokenHandler.WriteToken(token);
         }
     }
+    */
 }

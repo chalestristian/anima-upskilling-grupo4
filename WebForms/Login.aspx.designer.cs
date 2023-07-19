@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace MeuProjetoWebForms
+namespace WebForms
 {
 
 

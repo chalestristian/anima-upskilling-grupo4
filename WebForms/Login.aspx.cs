@@ -1,4 +1,5 @@
 ﻿using System;
+using WebForms.Models;
 
 namespace WebForms
 {
@@ -6,20 +7,25 @@ namespace WebForms
     {
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text;
-            string senha = txtSenha.Text;
+            UsuarioModels usuario = new UsuarioModels();
+            usuario.NomeUsuario = txtUsuario.Text;
+            usuario.Senha = txtSenha.Text;
 
-            // Conexão com o banco de dados PostgreSQL
-            string connectionString = "Host=localhost;Port=5432;Database=nomedobanco;Username=usuario;Password=senha;";
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            // Conexão com o banco de dados PostgreSQL e consulta para verificar as credenciais
+            // Substitua as informações de conexão com o banco de dados abaixo pelos dados do seu PostgreSQL
+            string connectionString = "Host=seu_host;Port=sua_porta;Database=seu_banco_de_dados;Username=seu_usuario;Password=sua_senha;";
+
+            using (var connection = new Npgsql.NpgsqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
+
+                    // Consulta SQL para verificar as credenciais do usuário
                     string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario = @Usuario AND Senha = @Senha";
-                    NpgsqlCommand command = new NpgsqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Usuario", usuario);
-                    command.Parameters.AddWithValue("@Senha", senha);
+                    var command = new Npgsql.NpgsqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Usuario", usuario.NomeUsuario);
+                    command.Parameters.AddWithValue("@Senha", usuario.Senha);
                     int count = (int)command.ExecuteScalar();
 
                     if (count == 1)

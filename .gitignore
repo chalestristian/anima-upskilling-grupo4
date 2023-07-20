@@ -8,3 +8,7 @@
 /identity/bin
 /api.Tests/bin
 /api.Tests/obj
+/console-teste/bin
+/console-teste/obj
+/console-consumer/obj
+/console-consumer/bin

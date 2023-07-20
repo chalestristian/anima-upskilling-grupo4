@@ -19,6 +19,8 @@ services:
     container_name: service-rabbitmq
     image: rabbitmq
     restart: always
+    ports:
+      - 56721:5672
     networks:
       - anima-network
 
@@ -44,6 +46,19 @@ services:
     restart: always
     ports:
       - 5200:5200
+    networks:
+      - anima-network
+
+  service-consumer:
+    build:
+      context: ./console-consumer
+      dockerfile: Dockerfile
+    container_name: service-consumer
+    restart: always
+    ports:
+      - 5300:5300 
+    depends_on:
+      - service-rabbitmq 
     networks:
       - anima-network
 

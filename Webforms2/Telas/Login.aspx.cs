@@ -7,6 +7,7 @@ namespace WebForms2.Telas
 {
     public partial class Login : Page
     {
+        // Lista para simular o armazenamento dos Usuários, tenho que buscar no banco os dados
         private List<Usuario> usuarios = new List<Usuario>
         {
             new Usuario("usuario1", "senha1"),

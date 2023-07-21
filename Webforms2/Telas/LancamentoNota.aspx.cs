@@ -28,7 +28,7 @@ namespace WebForms2.Telas
 
             // lógica para salvar a nota do aluno
                        
-            string connectionString = "Host=seu_host;Username=seu_usuario;Password=sua_senha;Database=seu_banco";
+            string connectionString = "Host=localhost:54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
 
             // insert de nota na tabela do banco de dados
             string sql = "INSERT INTO tabela_notas (ra_aluno, id_curso, nota, data_lancamento) VALUES (@raAluno, @idCurso, @nota, @dataLancamento)";

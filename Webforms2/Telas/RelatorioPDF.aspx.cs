@@ -5,8 +5,6 @@ using System.Web.UI;
 using Webforms2.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.Drawing;
-using System.Reflection.Metadata;
 
 namespace WebForms2.Telas
 {
@@ -14,12 +12,12 @@ namespace WebForms2.Telas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Lógica de inicialização da página, se necessário.
+            
         }
 
         protected void btnGerarRelatorio_Click(object sender, EventArgs e)
         {
-            // Simulação dos dados dos cursos e alunos (substitua por dados reais do seu sistema).
+            // Simulação dos dados dos cursos > Buscar do banco
             var cursos = new List<CursoModels>
             {
                 new CursoModels { IdCurso = 1, NomeCurso = "Curso A", CargaHoraria = 40, ValorCurso = 100.00M },
@@ -35,10 +33,9 @@ namespace WebForms2.Telas
                 new AlunosModels { RA = 101, Nome = "Aluno 4", Id = new PessoaModels { IdPessoa = 4, NomePessoa = "Pessoa 4", CPF = "444.444.444-44", Celular = "(44) 4444-4444", Email = "pessoa4@example.com", DataNascimento = DateTime.Now.AddYears(-22) }, NomeCurso = null, DataCadastro = DateTime.Now }
             };
 
-            // Gera o relatório em PDF.
+            // Gera e envia o arquivo PDF para download no navegador.
             byte[] pdfBytes = GeneratePDF(cursos, alunos);
-
-            // Envia o arquivo PDF para download no navegador.
+            
             Response.Clear();
             Response.ContentType = "application/pdf";
             Response.Headers.Add("Content-Disposition", "inline; filename=RelatorioCursosAlunos.pdf");
@@ -54,12 +51,10 @@ namespace WebForms2.Telas
                 Document document = new Document();
                 PdfWriter.GetInstance(document, stream);
                 document.Open();
-
-                // Configurar a fonte para o título do curso
-                Font fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
-
-                // Configurar a fonte para o conteúdo do relatório
-                Font fontConteudo = FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+                
+                Font fontTitulo = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD);
+                
+                Font fontConteudo = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
                 foreach (var curso in cursos)
                 {
@@ -80,7 +75,7 @@ namespace WebForms2.Telas
                         document.Add(new Paragraph("Nenhum aluno matriculado neste curso.", fontConteudo));
                     }
 
-                    document.Add(new Paragraph("")); // Adicionar uma linha em branco para separar os cursos
+                    document.Add(new Paragraph("")); // adc uma linha p separar os cursos
                 }
 
                 document.Close();

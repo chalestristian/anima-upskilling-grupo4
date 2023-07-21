@@ -1,0 +1,2 @@
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.AssemblyReference.cache
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.CoreCompileInputs.cache

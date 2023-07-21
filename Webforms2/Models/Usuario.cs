@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Webforms2.Models
 {
-    public class UsuarioModels
+    public class Usuario
     {
         public string Nome { get; set; }
         public string Senha { get; set; }
 
-        public UsuarioModels(string nome, string senha)
+        public Usuario(string nome, string senha)
         {
             Nome = nome;
             Senha = senha;

@@ -170,7 +170,7 @@ namespace api.Controllers
                 }
 
                 string certificadoUrl = matricula.Certificado;
-                return Ok(new { MatriculaId = matriculaId, CertificadoUrl = certificadoUrl });
+                return Ok(new { MatriculaId = matriculaId, DataSolicitacaoCertificado = matricula.DataSolicitacaoCertificado, CertificadoUrl = certificadoUrl });
             }
             catch (Exception ex)
             {

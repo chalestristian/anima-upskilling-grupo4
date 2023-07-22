@@ -112,7 +112,7 @@ namespace console_consumer
                 collection.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
                 collection.Add(new KeyValuePair<string, string>("client_id", "clientConsumerConsole"));
                 collection.Add(new KeyValuePair<string, string>("client_secret", "TfulATErsoDIRTiNeaTrecOUstasTORM"));
-                collection.Add(new KeyValuePair<string, string>("scope", "consumerConsole1"));
+                collection.Add(new KeyValuePair<string, string>("scope", "api1"));
                 var content = new FormUrlEncodedContent(collection);
                 request.Content = content;
                 var response = await client.SendAsync(request);

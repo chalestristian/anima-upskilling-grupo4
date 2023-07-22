@@ -30,7 +30,7 @@ namespace identity
                 {
                     new Secret("TfulATErsoDIRTiNeaTrecOUstasTORM".Sha256())
                 },
-                AllowedScopes = { "consumerConsole1" }
+                AllowedScopes = { "api1" }
             }
         };
 
@@ -38,14 +38,12 @@ namespace identity
             new List<ApiResource>
             {
                 new ApiResource("api1", "API Principal para gestão de cursos e alunos"),
-                new ApiResource("consumerConsole1", "Consumer console da fila de RabbitMQ")
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
                 new ApiScope("api1", "API Principal para gestão de cursos e alunos"),
-                new ApiScope("consumerConsole1", "Consumer console da fila de RabbitMQ"),
             };
 
         public static IEnumerable<IdentityResource> IdentityResources =>

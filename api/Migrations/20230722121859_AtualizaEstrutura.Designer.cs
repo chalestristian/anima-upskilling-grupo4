@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using api.Data;
@@ -11,9 +12,11 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230722121859_AtualizaEstrutura")]
+    partial class AtualizaEstrutura
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,9 +106,6 @@ namespace api.Migrations
                     b.Property<int?>("AlunoId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Certificado")
-                        .HasColumnType("text");
-
                     b.Property<int?>("CursoId")
                         .HasColumnType("integer");
 
@@ -113,9 +113,6 @@ namespace api.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataMatricula")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataSolicitacaoCertificado")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal?>("Media")

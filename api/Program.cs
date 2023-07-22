@@ -82,7 +82,13 @@ app.UseSwaggerUI(c =>
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 app.MapControllers();
 
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();

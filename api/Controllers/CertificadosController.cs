@@ -62,7 +62,7 @@ namespace api.Controllers
                 var titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 48);
                 var title = new Paragraph("", titleFont);
                 title.Alignment = Element.ALIGN_CENTER;
-                title.SpacingAfter = 120;
+                title.SpacingAfter = 150;
                 document.Add(title);
 
                 var contentFont = FontFactory.GetFont(FontFactory.HELVETICA, 30);
@@ -72,7 +72,7 @@ namespace api.Controllers
                 document.Add(content);
 
                 var dateFont = FontFactory.GetFont(FontFactory.HELVETICA, 16);
-                var date = new Paragraph(DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy"), dateFont);
+                var date = new Paragraph(DateTime.Now.ToString("dd/MM/yyyy"), dateFont);
                 date.Alignment = Element.ALIGN_CENTER;
                 document.Add(date);
 

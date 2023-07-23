@@ -17,7 +17,7 @@ namespace api.Migrations
             migrationBuilder.InsertData(
                 table: "Alunos",
                 columns: new[] { "PessoaId", "Matricula", "DataCadastro" },
-                values: new object[] { 2, "123456", DateTime.UtcNow });
+                values: new object[] { 1, "123456", DateTime.UtcNow });
 
             migrationBuilder.InsertData(
                 table: "Cursos",

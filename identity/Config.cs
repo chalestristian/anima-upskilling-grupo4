@@ -21,19 +21,29 @@ namespace identity
                     new Secret("tePONsUlaZErDINglOntrOcTriJo".Sha256())
                 },
                 AllowedScopes = { "api1" }
+            },
+            new Client
+            {
+                ClientId = "clientConsumerConsole",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets =
+                {
+                    new Secret("TfulATErsoDIRTiNeaTrecOUstasTORM".Sha256())
+                },
+                AllowedScopes = { "api1" }
             }
         };
 
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>
             {
-            new ApiResource("api1", "API Principal para gestão de cursos e alunos")
+                new ApiResource("api1", "API Principal para gestão de cursos e alunos"),
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-            new ApiScope("api1", "API Principal para gestão de cursos e alunos")
+                new ApiScope("api1", "API Principal para gestão de cursos e alunos"),
             };
 
         public static IEnumerable<IdentityResource> IdentityResources =>

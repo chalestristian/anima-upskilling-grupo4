@@ -7,6 +7,6 @@
         public string? CaminhoCapa { get; set; }
         public string? NomeProfessor { get; set; }
         public string? DescricaoCurso { get; set; }
-        public DateTime DataCadastro { get; set; }
+        public DateTime? DataCadastro { get; set; }
     }
 }

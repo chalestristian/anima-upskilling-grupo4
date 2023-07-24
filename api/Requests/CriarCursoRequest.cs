@@ -2,7 +2,7 @@
 {
     public class CriarCursoRequest
     {
-        public CursoRequest Curso { get; set; }
-        public IEnumerable<AulaRequest> Aulas { get; set; }
+        public CursoRequest? Curso { get; set; }
+        public IEnumerable<AulaRequest>? Aulas { get; set; }
     }
 }

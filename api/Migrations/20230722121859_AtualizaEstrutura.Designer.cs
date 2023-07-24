@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using api.Data;
@@ -11,9 +12,11 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230722121859_AtualizaEstrutura")]
+    partial class AtualizaEstrutura
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,12 +106,6 @@ namespace api.Migrations
                     b.Property<int?>("AlunoId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Boleto")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Certificado")
-                        .HasColumnType("text");
-
                     b.Property<int?>("CursoId")
                         .HasColumnType("integer");
 
@@ -117,12 +114,6 @@ namespace api.Migrations
 
                     b.Property<DateTime>("DataMatricula")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataSolicitacaoCertificado")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool?>("MatriculaConfirmada")
-                        .HasColumnType("boolean");
 
                     b.Property<decimal?>("Media")
                         .HasColumnType("numeric");
@@ -226,9 +217,6 @@ namespace api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AlunoId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("timestamp with time zone");
 
@@ -238,12 +226,6 @@ namespace api.Migrations
                     b.Property<string>("Login")
                         .HasColumnType("text");
 
-                    b.Property<bool?>("PerfilAdministrativo")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool?>("PerfilAluno")
-                        .HasColumnType("boolean");
-
                     b.Property<int?>("PessoaId")
                         .HasColumnType("integer");
 
@@ -251,8 +233,6 @@ namespace api.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AlunoId");
 
                     b.HasIndex("PessoaId");
 
@@ -303,15 +283,9 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Usuario", b =>
                 {
-                    b.HasOne("api.Models.Aluno", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("AlunoId");
-
                     b.HasOne("api.Models.Pessoa", "Pessoa")
                         .WithMany()
                         .HasForeignKey("PessoaId");
-
-                    b.Navigation("Aluno");
 
                     b.Navigation("Pessoa");
                 });

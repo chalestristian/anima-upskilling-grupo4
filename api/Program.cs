@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var port = 5100;
 
 builder.WebHost.ConfigureKestrel(options =>
@@ -29,6 +28,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var identityServerUrl = "http://service-identity:5200";
 
+
+
 // Configurar autenticação
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
@@ -41,6 +42,7 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuer = false
         };
     });
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -72,7 +74,11 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
-
+app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true) // allow any origin
+            .AllowCredentials());
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
@@ -82,7 +88,6 @@ app.UseSwaggerUI(c =>
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();

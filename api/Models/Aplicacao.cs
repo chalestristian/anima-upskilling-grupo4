@@ -12,9 +12,9 @@ namespace api.Models
         public string? Nome { get; set; }
 
         [Required]
-        public string AppKey { get; set; }
+        public string? AppKey { get; set; }
 
         [Required]
-        public string SecretKey { get; set; }
+        public string? SecretKey { get; set; }
     }
 }

@@ -40,12 +40,46 @@ namespace api.Controllers
             return Ok(aluno);
         }
 
+        // GET: api/Alunos/12345678909
+        [HttpGet("{cpf}")]
+        public ActionResult<Aluno> GetAlunoByCPF(string cpf)
+        {
+            var aluno = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Pessoa.CPF == cpf);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            return Ok(aluno);
+        }
+
+        // GET: api/Alunos/123456
+        [HttpGet("{matricula}")]
+        public ActionResult<Aluno> GetAlunoByMatricula(string matricula)
+        {
+            var aluno = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Matricula == matricula);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            return Ok(aluno);
+        }
+
         // POST: api/Alunos
         [HttpPost]
         public ActionResult<Aluno> CreateAluno(Aluno aluno)
         {
+            // Verificar se a pessoa já existe no banco de dados pelo CPF
+            var pessoaExistente = _context.Pessoas.FirstOrDefault(p => p.CPF == aluno.Pessoa.CPF);
+
+            if (pessoaExistente != null)
+            {
+                // Se a pessoa já existe, associa ela ao aluno
+                aluno.Pessoa = pessoaExistente;
+            }
+
             _context.Alunos.Add(aluno);
             _context.SaveChanges();
+            return CreatedAtAction(nameof(GetAluno), new { id = aluno.Id }, aluno);
             return CreatedAtAction(nameof(GetAluno), new { id = aluno.Id }, aluno);
         }
 

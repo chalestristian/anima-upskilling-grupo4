@@ -12,3 +12,4 @@
 /console-teste/obj
 /console-consumer/obj
 /console-consumer/bin
+!/api/bin/Debug/net7.0/fundo-certificado.jpg

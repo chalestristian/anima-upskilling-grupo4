@@ -2,6 +2,12 @@
 {
     public class Matricula
     {
+
+        public Matricula()
+        {
+            MatriculaConfirmada = false;
+        }
+
         public int Id { get; set; }
         public Aluno? Aluno { get; set; }
         public Curso? Curso { get; set; }
@@ -12,5 +18,7 @@
         public string? Status { get; set; }
         public DateTime DataSolicitacaoCertificado { get; set; }
         public string? Certificado { get; set; }
+        public Boolean? MatriculaConfirmada { get; set; }
+        public string? Boleto { get; set; }
     }
 }

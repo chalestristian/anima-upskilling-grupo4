@@ -40,6 +40,18 @@ namespace api.Controllers
             return Ok(pessoa);
         }
 
+        // GET: api/Pessoas/12345678909
+        [HttpGet("{cpf}")]
+        public ActionResult<Pessoa> GetPessoaByCPF(string cpf)
+        {
+            var pessoa = _context.Pessoas.FirstOrDefault(p => p.CPF == cpf);
+            if (pessoa == null)
+            {
+                return NotFound();
+            }
+            return Ok(pessoa);
+        }
+
         // POST: api/Pessoas
         [HttpPost]
         public ActionResult<Pessoa> CreatePessoa(Pessoa pessoa)

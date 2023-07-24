@@ -40,10 +40,39 @@ namespace api.Controllers
             return Ok(usuario);
         }
 
+        // GET: api/Usuarios/login
+        [HttpGet("{login}")]
+        public ActionResult<Usuario> GetUsuarioByLogin(string login)
+        {
+            var usuario = _context.Usuarios.Include(u => u.Pessoa).FirstOrDefault(u => u.Login == login);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return Ok(usuario);
+        }
+
         // POST: api/Usuarios
         [HttpPost]
         public ActionResult<Usuario> CreateUsuario(Usuario usuario)
         {
+            // Verificar se a pessoa já existe no banco de dados pelo CPF
+            var pessoaExistente = _context.Pessoas.FirstOrDefault(p => p.CPF == usuario.Pessoa.CPF);
+
+            if (pessoaExistente != null)
+            {
+                // Se a pessoa já existe, associa ela ao usuário
+                usuario.Pessoa = pessoaExistente;
+            }
+
+            var alunoExistente = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Pessoa.CPF == usuario.Pessoa.CPF);
+
+            if (alunoExistente != null)
+            {
+                // Se o aluno já existe, associa ela ao usuário
+                usuario.Aluno = alunoExistente;
+            }
+
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuario);

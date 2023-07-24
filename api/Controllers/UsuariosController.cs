@@ -25,30 +25,36 @@ namespace api.Controllers
         public ActionResult<IEnumerable<Usuario>> GetUsuarios()
         {
             var usuarios = _context.Usuarios.Include(u => u.Pessoa).ToList();
+            foreach(Usuario usuario in usuarios)
+            {
+                usuario.Senha = "*************";
+            }
             return Ok(usuarios);
         }
 
         // GET: api/Usuarios/1
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public ActionResult<Usuario> GetUsuario(int id)
         {
-            var usuario = _context.Usuarios.Include(u => u.Pessoa).FirstOrDefault(u => u.Id == id);
+            var usuario = _context.Usuarios.Include(u => u.Pessoa).Include(u => u.Aluno).FirstOrDefault(u => u.Id == id);
             if (usuario == null)
             {
                 return NotFound();
             }
+            usuario.Senha = "*************";
             return Ok(usuario);
         }
 
         // GET: api/Usuarios/login
-        [HttpGet("{login}")]
+        [HttpGet("login/{login}")]
         public ActionResult<Usuario> GetUsuarioByLogin(string login)
         {
-            var usuario = _context.Usuarios.Include(u => u.Pessoa).FirstOrDefault(u => u.Login == login);
+            var usuario = _context.Usuarios.Include(u => u.Pessoa).Include(u => u.Aluno).FirstOrDefault(u => u.Login == login);
             if (usuario == null)
             {
                 return NotFound();
             }
+            usuario.Senha = "*************";
             return Ok(usuario);
         }
 
@@ -105,6 +111,27 @@ namespace api.Controllers
             _context.Usuarios.Remove(usuario);
             _context.SaveChanges();
             return NoContent();
+        }
+
+        // POST: api/Alunos/Login
+        [HttpPost("Login")]
+        public ActionResult Login(LoginRequest loginRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var usuario = _context.Usuarios.Include(u => u.Pessoa).Include(u => u.Aluno).FirstOrDefault(u => u.Login == loginRequest.Login);
+
+            if (usuario == null || usuario.Senha != loginRequest.Senha)
+            {
+                return Unauthorized("Nome de usuário ou senha incorretos.");
+            }
+
+            usuario.Senha = "*************";
+
+            return Ok(usuario);
         }
     }
 }

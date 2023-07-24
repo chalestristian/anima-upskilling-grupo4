@@ -29,7 +29,7 @@ namespace api.Controllers
         }
 
         // GET: api/Alunos/1
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public ActionResult<Aluno> GetAluno(int id)
         {
             var aluno = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Id == id);
@@ -41,7 +41,7 @@ namespace api.Controllers
         }
 
         // GET: api/Alunos/12345678909
-        [HttpGet("{cpf}")]
+        [HttpGet("cpf/{cpf}")]
         public ActionResult<Aluno> GetAlunoByCPF(string cpf)
         {
             var aluno = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Pessoa.CPF == cpf);
@@ -53,7 +53,7 @@ namespace api.Controllers
         }
 
         // GET: api/Alunos/123456
-        [HttpGet("{matricula}")]
+        [HttpGet("matricula/{matricula}")]
         public ActionResult<Aluno> GetAlunoByMatricula(string matricula)
         {
             var aluno = _context.Alunos.Include(a => a.Pessoa).FirstOrDefault(a => a.Matricula == matricula);

@@ -9,7 +9,7 @@ namespace Webforms2.Models
     {
         public int IdModulo { get; set; }
         public CursoModels Curso { get; set; }
-        public string Nome { get; set; }
+        public string NomeModulo { get; set; }
         public int CH { get; set; }
     }
 }

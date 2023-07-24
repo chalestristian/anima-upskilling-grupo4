@@ -1,4 +1,5 @@
-﻿body {
+﻿body 
+{
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
@@ -9,7 +10,8 @@
     height: 100vh;
 }
 
-.formLogin {
+.formLogin 
+{
     background-color: #f9f9f9;
     border-radius: 7px;
     padding: 40px;
@@ -19,25 +21,29 @@
     width: 100%;
 }
 
-    .formLogin h1 {
+    .formLogin h1 
+    {
         padding: 0;
         margin: 0;
         font-weight: 500;
         font-size: 2.3em;
     }
 
-    .formLogin p {
+    .formLogin p 
+    {
         font-size: 14px;
         color: #666;
         margin-bottom: 25px;
     }
 
-    .formLogin label {
+    .formLogin label 
+    {
         font-size: 14px;
         font-weight: 600;
     }
 
-    .formLogin input {
+    .formLogin input 
+    {
         padding: 15px;
         font-size: 14px;
         border: 1px solid #ccc;
@@ -49,22 +55,26 @@
         width: 100%;
     }
 
-        .formLogin input:focus {
+        .formLogin input:focus 
+        {
             border: 1px solid #f72585;
         }
 
-    .formLogin a {
+    .formLogin a 
+    {
         font-size: 13px;
         color: #555;
         transition: all linear 160ms;
         text-decoration: none;
     }
 
-        .formLogin a:hover {
+        .formLogin a:hover 
+        {
             color: #f72585;
         }
 
-.btn {
+.btn 
+{
     background-color: #4B0082;
     color: #fff;
     font-size: 14px;
@@ -76,11 +86,13 @@
     width: 100%;
 }
 
-    .btn:hover {
+    .btn:hover 
+    {
         transform: scale(1.05);
         background-color: #8A2BE2;
     }
 
-.error-message {
+.error-message 
+{
     color: #ff0000;
 }

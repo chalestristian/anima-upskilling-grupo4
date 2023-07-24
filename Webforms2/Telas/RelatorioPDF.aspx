@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório de Cursos e Alunos Matriculados</title>
-    <link rel="stylesheet" href="Styles/Relatorio.css">
-    <link rel="stylesheet" href="../Styles/Main.css">
+    <link rel="stylesheet" href="Styles/RelatorioPDF.css">
 </head>
 <body>
     <form runat="server" class="formRelatorio">

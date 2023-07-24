@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Curso</title>
     <link rel="stylesheet" href="Styles/CadastroCurso.css">
-    <link rel="stylesheet" href="../Styles/Main.css">
 </head>
 <body>
     <form runat="server" class="formCadastroCurso">

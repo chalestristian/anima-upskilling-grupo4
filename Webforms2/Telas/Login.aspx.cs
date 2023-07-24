@@ -21,18 +21,15 @@ namespace WebForms2.Telas
             string usuarioDigitado = txtUsuario.Text;
             string senhaDigitada = txtSenha.Text;
 
-            
             Usuario usuarioAutenticado = usuarios.Find(u => u.Nome == usuarioDigitado && u.Senha == senhaDigitada);
 
             if (usuarioAutenticado != null)
             {
-                
                 Response.Redirect("PaginaProtegida.aspx");
             }
             else
             {
-                
-                string connectionString = "";
+                string connectionString = "Host=nome_do_servidor;Username=seu_usuario;Password=sua_senha;Database=nome_do_banco_de_dados";
 
                 using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
                 {
@@ -53,17 +50,22 @@ namespace WebForms2.Telas
                             }
                             else
                             {
-                                lblMensagem.InnerText = "Usuário ou senha inválidos.";
+                                lblMensagem.Text = "Usuário ou senha inválidos.";
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        
-                        lblMensagem.InnerText = "Ocorreu um erro na autenticação.";
+                        lblMensagem.Text = "Ocorreu um erro na autenticação.";
                     }
                 }
             }
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

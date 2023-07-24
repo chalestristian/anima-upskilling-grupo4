@@ -6,7 +6,6 @@
 <head runat="server">
     <title>Lançamento de Notas</title>
     <link rel="stylesheet" href="Styles/LancamentoNota.css">
-    <link rel="stylesheet" href="../Styles/Main.css">
 </head>
 <body>
     <form id="form1" runat="server" class="formLancamentoNota">

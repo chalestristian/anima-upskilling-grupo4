@@ -14,7 +14,7 @@ namespace WebForms2.Telas
         {            
             if (!IsPostBack)
             {
-                //carregamento de cursos previamente cadastrados em uma lista.
+                //carregamento de cursos previamente cadastrados 
                 cursos.Add(new CursoModels { IdCurso = 1, NomeCurso = "Curso A", CargaHoraria = 40, ValorCurso = 100.00M });
                 cursos.Add(new CursoModels { IdCurso = 2, NomeCurso = "Curso B", CargaHoraria = 30, ValorCurso = 150.00M });
                 cursos.Add(new CursoModels { IdCurso = 3, NomeCurso = "Curso C", CargaHoraria = 50, ValorCurso = 200.00M });
@@ -22,8 +22,7 @@ namespace WebForms2.Telas
             }
             else
             {
-                // ações do usuário que enviam a página novamente para o servidor.
-                // ações do usuário que enviam a página novamente para o servidor.
+                // recarregar página
             }
         }
 
@@ -33,14 +32,14 @@ namespace WebForms2.Telas
             int? cargaHoraria = null;
             decimal? valor = null;
 
-            // Aqui eu verifico se os campos de Carga Horária e Valor foram preenchidos.
+            // campos de CH e Valor foram preenchidos?
             if (!string.IsNullOrEmpty(txtCargaHoraria.Text))
                 cargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
 
             if (!string.IsNullOrEmpty(txtValor.Text))
                 valor = Convert.ToDecimal(txtValor.Text);
 
-            // Criação do objeto CursoModels com as informações fornecidas pelo usuário.
+            // Criação do objeto CursoModels
             CursoModels curso = new CursoModels
             {
                 NomeCurso = nomeCurso,

@@ -1,0 +1,66 @@
+﻿.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #f72585; /* fundo do cabeçalho */
+}
+
+.formLancamentoNota {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px;
+    align-items: center;
+}
+
+    .formLancamentoNota h1 {
+        padding: 0;
+        margin: 0;
+        font-weight: 500;
+        font-size: 2.3em;
+        color: #023047; /* Cor do título */
+    }
+
+    .formLancamentoNota label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #023047; /* Cor das labels */
+    }
+
+    .formLancamentoNota input {
+        padding: 15px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        border-radius: 4px;
+        transition: all linear 160ms;
+        outline: none;
+    }
+
+        .formLancamentoNota input:focus {
+            border: 1px solid #f72585;
+        }
+
+    .formLancamentoNota .btn {
+        background-color: #4B0082; /* Cor de fundo do botão Salvar */
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        border: none !important;
+        transition: all linear 160ms;
+        cursor: pointer;
+        margin: 0 !important;
+    }
+
+        .formLancamentoNota .btn:hover {
+            transform: scale(1.05);
+            background-color: #5F00B4; /* Cor de fundo do botão Salvar ao passar o mouse */
+        }

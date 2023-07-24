@@ -1,5 +1,5 @@
-C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.AssemblyReference.cache
-C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.CoreCompileInputs.cache
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\Webforms2.dll.config
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\Webforms2.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\Webforms2.pdb
@@ -10,11 +10,9 @@ C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\csi.exe
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\csi.exe.config
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\csi.rsp
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -233,6 +231,8 @@ C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\Microsoft.AspNe
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\pt-br\System.Web.Optimization.resources.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\bin\pt-br\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.AssemblyReference.cache
+C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.CoreCompileInputs.cache
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.csproj.CopyComplete
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.dll
 C:\Users\matheus.chaves\source\repos\Projeto-Final\Webforms2\obj\Debug\Webforms2.pdb

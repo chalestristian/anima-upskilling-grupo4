@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api", "api.csproj", "{F5E86
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webforms2", "..\Webforms2\Webforms2.csproj", "{D6D136ED-E407-4682-B5CE-D2BB224ADEF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretariaAcademica-Webforms", "..\SecretariaAcademica-Webforms\SecretariaAcademica-Webforms.csproj", "{482F15F3-E2B2-45A1-9C1B-F30F9FD97D12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D6D136ED-E407-4682-B5CE-D2BB224ADEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6D136ED-E407-4682-B5CE-D2BB224ADEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D136ED-E407-4682-B5CE-D2BB224ADEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482F15F3-E2B2-45A1-9C1B-F30F9FD97D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482F15F3-E2B2-45A1-9C1B-F30F9FD97D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482F15F3-E2B2-45A1-9C1B-F30F9FD97D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482F15F3-E2B2-45A1-9C1B-F30F9FD97D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,7 +26,7 @@
     box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     gap: 10px;
     text-align: center;
-    width: 50%; /* Reduzindo o tamanho da caixa para metade */
+    width: 50%; 
 }
 
     .formLogin h1 {

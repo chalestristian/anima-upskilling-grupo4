@@ -1,12 +1,13 @@
-﻿/* Styles/PaginaPosAcesso.css */
-body {
+﻿body 
+{
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     color: #023047;
 }
 
-.page {
+.page 
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +18,8 @@ body {
     background-color: #480ca8;
 }
 
-.formPosAcesso {
+.formPosAcesso 
+{
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -28,20 +30,23 @@ body {
     text-align: center;
 }
 
-    .formPosAcesso h2 {
+    .formPosAcesso h2 
+    {
         padding: 0;
         margin: 0;
         font-weight: 500;
         font-size: 2.3em;
     }
 
-    .formPosAcesso p {
+    .formPosAcesso p 
+    {
         font-size: 14px;
         color: #666;
         margin-bottom: 25px;
     }
 
-    .formPosAcesso button {
+    .formPosAcesso button 
+    {
         padding: 15px;
         font-size: 14px;
         border: none;
@@ -52,7 +57,9 @@ body {
         color: #fff;
     }
 
-        .formPosAcesso button:hover {
+        .formPosAcesso button:hover 
+        {
             transform: scale(1.05);
             background-color: #ff0676;
         }
+        

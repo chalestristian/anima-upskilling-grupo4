@@ -1,18 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PaginaInicial.aspx.cs" Inherits="WebForms2.Telas.PaginaPosAcesso" %>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Página Pós Acesso</title>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="Styles/PaginaInicial.css" />
 </head>
 <body>
     <form runat="server">
-        <div>
-            <h2>Bem-vindo à Página Inicial</h2>
-            <p>O que você deseja fazer?</p>
-            <asp:Button ID="btnCadastroCurso" runat="server" Text="Cadastro de Curso" OnClick="btnCadastroCurso_Click" />
-            <asp:Button ID="btnLancamentoNotas" runat="server" Text="Lançamento de Notas" OnClick="btnLancamentoNotas_Click" />
-            <asp:Button ID="btnRelatorioCursos" runat="server" Text="Relatório de Cursos e Alunos Matriculados" OnClick="btnRelatorioCursos_Click" />
+        <div class="page">
+            <h1>Página Inicial</h1>
+            <p>Bem-vindo à página inicial!
+                Selecione a opção desejada.
+            </p>
+            <a href="Login.aspx" class="btn">Voltar para o Login</a>
+            <a href="CadastroCurso.aspx" class="btn">Cadastro de Curso</a>
+            <a href="LancamentoNota.aspx" class="btn">Lançamento de Notas</a>
+            <a href="Relatorio.aspx" class="btn">Relatório de Cursos e Alunos Matriculados</a>
+            <a href="Login.aspx" class="btn-sair">Sair</a>
         </div>
     </form>
 </body>

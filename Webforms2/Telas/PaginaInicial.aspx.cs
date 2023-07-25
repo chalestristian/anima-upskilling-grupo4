@@ -2,11 +2,11 @@
 
 namespace WebForms2.Telas
 {
-    public partial class PaginaPosAcesso : System.Web.UI.Page
+    public partial class PaginaInicial : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Verifique se o usuário está autenticado. Caso contrário, redirecione-o de volta para a tela de login.
+            // Verifique se o usuário está autenticado
             if (Session["UsuarioAutenticado"] == null || !(bool)Session["UsuarioAutenticado"])
             {
                 Response.Redirect("Login.aspx");

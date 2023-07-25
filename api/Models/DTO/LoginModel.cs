@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace api.Models
+namespace api.Models.DTO
 {
-    public class LoginRequest
+    [NotMapped]
+    public class LoginModel
     {
         [Required]
         public string Login { get; set; }

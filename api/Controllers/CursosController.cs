@@ -25,6 +25,10 @@ namespace api.Controllers
         public ActionResult<IEnumerable<Curso>> GetCursos()
         {
             var cursos = _context.Cursos.ToList();
+            foreach (var curso in cursos)
+            {
+                curso.ModulosCurso = _context.ModulosCursos.Where(m => m.Curso.Id == curso.Id).ToList();
+            }
             return Ok(cursos);
         }
 
@@ -33,6 +37,7 @@ namespace api.Controllers
         public ActionResult<Curso> GetCurso(int id)
         {
             var curso = _context.Cursos.FirstOrDefault(c => c.Id == id);
+            curso.ModulosCurso = _context.ModulosCursos.Where(m => m.Curso.Id == curso.Id).ToList();
             if (curso == null)
             {
                 return NotFound();

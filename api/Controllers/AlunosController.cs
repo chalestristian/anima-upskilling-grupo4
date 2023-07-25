@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using api.Models;
 using api.Data;
 using Microsoft.AspNetCore.Authorization;
+using api.Models.DTO;
 
 namespace api.Controllers
 {
@@ -66,21 +67,45 @@ namespace api.Controllers
 
         // POST: api/Alunos
         [HttpPost]
-        public ActionResult<Aluno> CreateAluno(Aluno aluno)
+        public ActionResult<Aluno> CreateAluno(AlunoCreateModel alunoCreateModel)
         {
-            // Verificar se a pessoa já existe no banco de dados pelo CPF
-            var pessoaExistente = _context.Pessoas.FirstOrDefault(p => p.CPF == aluno.Pessoa.CPF);
-
-            if (pessoaExistente != null)
+            if (!ModelState.IsValid)
             {
-                // Se a pessoa já existe, associa ela ao aluno
-                aluno.Pessoa = pessoaExistente;
+                return BadRequest(ModelState);
             }
+
+            var pessoaExistente = _context.Pessoas.FirstOrDefault(p => p.Id == alunoCreateModel.PessoaId);
+
+            if (pessoaExistente == null)
+            {
+                return BadRequest("A pessoa com o ID especificado não foi encontrada.");
+            }
+
+            var matriculaExistente = _context.Alunos.FirstOrDefault(a => a.Pessoa.Id == alunoCreateModel.PessoaId);
+
+            if (matriculaExistente != null)
+            {
+                return Conflict($"A pessoa já possui outra matrícula. Matrícula atual: {matriculaExistente.Matricula}");
+            }
+
+            if (_context.Alunos.Any(a => a.Matricula == alunoCreateModel.Matricula))
+            {
+                return Conflict("A matrícula especificada já está em uso.");
+            }
+
+            var aluno = new Aluno
+            {
+                Pessoa = pessoaExistente,
+                Matricula = alunoCreateModel.Matricula,
+                DataCadastro = DateTime.UtcNow
+            };
 
             _context.Alunos.Add(aluno);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetAluno), new { id = aluno.Id }, aluno);
-            return CreatedAtAction(nameof(GetAluno), new { id = aluno.Id }, aluno);
+
+            aluno = _context.Alunos.FirstOrDefault(a => a.Id == aluno.Id);
+
+            return Ok(aluno);
         }
 
         // PUT: api/Alunos/1

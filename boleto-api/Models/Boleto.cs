@@ -35,11 +35,23 @@ public class Boleto
     public string BeneficiarioCidadeUF { get; }
 
     public string Descricao { get; set; }
-
     public void GerarLinhaDigitavelECodigoBarras()
     {
-        LinhaDigitavel = "34191.79001 01043.510047 91020.150008 5 82950000026300";
-        CodigoBarras = "3419582950000026300101004351004791010150008";
+        LinhaDigitavel = GerarValor(48);
+        CodigoBarras = GerarValor(44);
     }
+    public static string GerarValor(int length)
+    {
+        var random = new Random();
+        string number = "";
+
+        for (int i = 0; i < length; i++)
+        {
+            number += random.Next(0, 9).ToString();
+        }
+
+        return number;
+    }
+
 
 }

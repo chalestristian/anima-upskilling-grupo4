@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using Npgsql; 
+using Npgsql;
 using System.Web.UI;
 using Webforms2.Models;
 
@@ -9,63 +9,51 @@ namespace WebForms2.Telas
 {
     public partial class Login : Page
     {
-        // Lista para simular o armazenamento dos Usuários
-        private List<Usuario> usuarios = new List<Usuario>
-        {
-            new Usuario("usuario1", "senha1"),
-            new Usuario("usuario2", "senha2")
-        };
-
         protected void btnEntrar_Click(object sender, EventArgs e)
         {
             string usuarioDigitado = txtUsuario.Text;
             string senhaDigitada = txtSenha.Text;
 
-            Usuario usuarioAutenticado = usuarios.Find(u => u.Nome == usuarioDigitado && u.Senha == senhaDigitada);
+            string connectionString = "Host=localhost;Port=54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
 
-            if (usuarioAutenticado != null)
+            using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
             {
-                Response.Redirect("PaginaProtegida.aspx");
-            }
-            else
-            {
-                string connectionString = "Host=nome_do_servidor;Username=seu_usuario;Password=sua_senha;Database=nome_do_banco_de_dados";
-
-                using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
+                try
                 {
-                    try
+                    con.Open();
+                    string sql = "SELECT COUNT(*) FROM \"Usuarios\" WHERE \"Login\" = @Nome AND \"Senha\" = @Senha";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        con.Open();
-                        string sql = "SELECT COUNT(*) FROM tabela_usuarios WHERE nome = @Nome AND senha = @Senha";
-                        using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
-                        {
-                            cmd.Parameters.AddWithValue("@Nome", usuarioDigitado);
-                            cmd.Parameters.AddWithValue("@Senha", senhaDigitada);
+                        cmd.Parameters.AddWithValue("@Nome", usuarioDigitado);
+                        cmd.Parameters.AddWithValue("@Senha", senhaDigitada);
 
-                            int result = (int)cmd.ExecuteScalar();
-                            if (result > 0)
-                            {
-                                // Se autenticação ok, redirecionar para a próxima página
-                                Response.Redirect("PaginaProtegida.aspx");
-                            }
-                            else
-                            {
-                                lblMensagem.Text = "Usuário ou senha inválidos.";
-                            }
+                        int result = (int)cmd.ExecuteScalar();
+                        if (result > 0)
+                        {
+                            // Autenticação bem-sucedida
+                            Session["UsuarioAutenticado"] = true;
+                            Response.Redirect("PaginaInicial.aspx");
+                        }
+                        else
+                        {
+                            lblMensagem.Text = "Usuário ou senha inválidos.";
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        lblMensagem.Text = "Ocorreu um erro na autenticação.";
-                    }
+                }
+                catch (Exception ex)
+                {
+                    lblMensagem.Text = "Ocorreu um erro na autenticação, verifique os dados informados.";
                 }
             }
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Redireciona para Página Inicial 
+            if (Session["UsuarioAutenticado"] != null && (bool)Session["UsuarioAutenticado"])
+            {
+                Response.Redirect("PaginaInicial.aspx");
+            }
         }
     }
 }

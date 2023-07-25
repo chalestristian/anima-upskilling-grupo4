@@ -532,12 +532,14 @@
     <Content Include="Site.Master" />
     <Content Include="Telas\Login.aspx" />
     <Content Include="Telas\CadastroCurso.aspx" />
+    <Content Include="Telas\Styles\PaginaInicial.css" />
     <Content Include="Telas\Styles\RelatorioPDF.css" />
     <Content Include="Telas\Styles\LancamentoNota.css" />
     <Content Include="Telas\Styles\CadastroCurso.css" />
     <Content Include="Telas\Styles\Login.css" />
     <Content Include="Telas\RelatorioPDF.aspx" />
     <Content Include="Telas\LancamentoNota.aspx" />
+    <Content Include="Telas\PaginaInicial.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -618,6 +620,13 @@
     </Compile>
     <Compile Include="Telas\LancamentoNota.aspx.designer.cs">
       <DependentUpon>LancamentoNota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\PaginaInicial.aspx.cs">
+      <DependentUpon>PaginaInicial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Telas\PaginaInicial.aspx.designer.cs">
+      <DependentUpon>PaginaInicial.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -20,7 +20,7 @@ namespace WebForms2.Telas
             }
         }
 
-        protected void btnCadastrar_Click(object sender, EventArgs e)
+        protected void btnCadastrarCurso_Click(object sender, EventArgs e)
         {
             string nomeCurso = txtNomeCurso.Text;
             int? cargaHoraria = null;
@@ -49,6 +49,22 @@ namespace WebForms2.Telas
                 int idCurso = Convert.ToInt32(ddlCursos.SelectedValue);
                 DeletarCursoDoBanco(idCurso);
             }
+        }
+
+        protected void btnCadastrarModulo_Click(object sender, EventArgs e)
+        {
+            int cursoId = Convert.ToInt32(ddlCursosModulo.SelectedValue);
+            string nomeModulo = txtNomeModulo.Text;
+            int cargaHorariaModulo = Convert.ToInt32(txtCargaHorariaModulo.Text);
+
+            ModuloModels modulo = new ModuloModels
+            {   
+                //IdCurso = cursoId,
+                NomeModulo = nomeModulo,
+                CHModulo = cargaHorariaModulo
+            };
+
+            AdicionarModuloAoBanco(modulo);
         }
 
         private void CarregarCursosDoBanco()
@@ -192,8 +208,6 @@ namespace WebForms2.Telas
                     {
                         using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
-                            List<ModuloModels> modulos = new List<ModuloModels>();
-
                             while (reader.Read())
                             {
                                 int idModulo = Convert.ToInt32(reader["ID"]);
@@ -209,13 +223,13 @@ namespace WebForms2.Telas
 
                                 modulos.Add(modulo);
                             }
-
-                            ddlModulos.DataSource = modulos;
-                            ddlModulos.DataTextField = "NomeModulo";
-                            ddlModulos.DataValueField = "IdModulo";
-                            ddlModulos.DataBind();
                         }
                     }
+
+                    ddlCursosModulo.DataSource = modulos;
+                    ddlCursosModulo.DataTextField = "NomeModulo";
+                    ddlCursosModulo.DataValueField = "IdModulo";
+                    ddlCursosModulo.DataBind();
                 }
                 catch (NpgsqlException ex)
                 {
@@ -228,7 +242,43 @@ namespace WebForms2.Telas
             }
         }
 
+        private void AdicionarModuloAoBanco(ModuloModels modulo)
+        {
+            string connectionString = "Host=localhost;Port=54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
 
+            using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string sql = "INSERT INTO \"Modulos\" (\"IdCurso\", \"Nome\", \"CH\") VALUES (@IdCurso, @Nome, @CH)";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
+                    {
+                        //cmd.Parameters.AddWithValue("@IdCurso", modulo.IdCurso);
+                        cmd.Parameters.AddWithValue("@Nome", modulo.NomeModulo);
+                        cmd.Parameters.AddWithValue("@CH", modulo.CHModulo);
 
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            lblMensagemModulo.Text = "Módulo cadastrado com sucesso!";
+                            CarregarModulosDoBanco();
+                        }
+                        else
+                        {
+                            lblMensagemModulo.Text = "Ocorreu um erro ao cadastrar o módulo.";
+                        }
+                    }
+                }
+                catch (NpgsqlException ex)
+                {
+                    lblMensagemModulo.Text = "Ocorreu um erro na conexão com o banco de dados: " + ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    lblMensagemModulo.Text = "Ocorreu um erro desconhecido: " + ex.Message;
+                }
+            }
+        }
     }
 }

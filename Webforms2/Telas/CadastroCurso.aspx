@@ -29,9 +29,11 @@
             <br />
             <br />
             <asp:Label ID="lblMensagem" runat="server" CssClass="mensagem"></asp:Label>
+
+            <!-- Seção de Cadastro de Módulo -->
             <h2>Cadastro de Módulo</h2>
             <label>Curso:</label>
-            <asp:DropDownList ID="ddlModulo" runat="server" DataTextField="NomeCurso" DataValueField="IdCurso"></asp:DropDownList>
+            <asp:DropDownList ID="ddlCursosModulo" runat="server" DataTextField="NomeCurso" DataValueField="IdCurso"></asp:DropDownList>
             <br />
             <label>Nome do Módulo:</label>
             <asp:TextBox ID="txtNomeModulo" runat="server"></asp:TextBox>

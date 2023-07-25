@@ -19,6 +19,8 @@
             <label>Valor:</label>
             <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>
             <br />
+            <label>Curso:</label>
+            <asp:DropDownList ID="ddlCursosModulo" runat="server" DataTextField="NomeCurso" DataValueField="IdCurso"></asp:DropDownList>
             <asp:Button ID="btnCadastrarCurso" runat="server" Text="Cadastrar Curso" OnClick="btnCadastrarCurso_Click" CssClass="btn" />
             <br />
             <br />
@@ -30,10 +32,8 @@
             <br />
             <asp:Label ID="lblMensagem" runat="server" CssClass="mensagem"></asp:Label>
 
-            <!-- Seção de Cadastro de Módulo -->
-            <h2>Cadastro de Módulo</h2>
-            <label>Curso:</label>
-            <asp:DropDownList ID="ddlCursosModulo" runat="server" DataTextField="NomeCurso" DataValueField="IdCurso"></asp:DropDownList>
+            <!-- Cadastro de Módulo -->
+            <h2>Cadastro de Módulo</h2>            
             <br />
             <label>Nome do Módulo:</label>
             <asp:TextBox ID="txtNomeModulo" runat="server"></asp:TextBox>

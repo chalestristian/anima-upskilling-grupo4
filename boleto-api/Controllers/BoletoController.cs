@@ -176,7 +176,15 @@ namespace boleto_api.Controllers
 
                 document.Close();
 
-                return File(memoryStream.ToArray(), "application/pdf", "boleto.pdf");
+                //Devolver o próprio arquivo
+                //return File(memoryStream.ToArray(), "application/pdf", "boleto.pdf");
+
+                var pdfBytes = memoryStream.ToArray();
+
+                string base64Pdf = Convert.ToBase64String(pdfBytes);
+                string dataUri = "data:application/pdf;base64," + base64Pdf;
+
+                return Ok(new { Message = "Boleto gerado com sucesso! ", UrlCertificado = dataUri });
             }
         }
 

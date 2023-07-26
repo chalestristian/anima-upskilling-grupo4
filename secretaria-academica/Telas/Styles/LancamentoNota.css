@@ -1,0 +1,159 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #4B0082; 
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333; 
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4B0082; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #800080; 
+    }
+
+.btn-sair {
+    background-color: #FF0000; 
+}
+
+    .btn-sair:hover {
+        background-color: #8B0000; 
+    }
+
+.formLancamentoNota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+    .formLancamentoNota label {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .formLancamentoNota input[type="text"],
+    .formLancamentoNota select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .formLancamentoNota .btn-primary {
+        background-color: #4B0082;
+    }
+
+    .formLancamentoNota .btn-danger {
+        background-color: #FF0000; 
+    }
+
+.mensagem {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.mensagem-erro {
+    background-color: #ff5959; 
+}
+
+.mensagem-sucesso {
+    background-color: #4caf50; 
+}
+
+.buscarNotas {
+    margin-top: 20px;
+    width: 100%;
+}
+
+    .buscarNotas h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        color: #4B0082; 
+    }
+
+    .buscarNotas .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 1.2em;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: #4B0082; 
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .buscarNotas .btn:hover {
+            background-color: #800080; 
+        }
+
+.gridNotasLancadas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .gridNotasLancadas th, .gridNotasLancadas td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .gridNotasLancadas th {
+        background-color: #4B0082; 
+        color: #fff;
+    }
+
+    .gridNotasLancadas tr:hover {
+        background-color: #f2f2f2;
+    }
+
+.mensagem-busca {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+}

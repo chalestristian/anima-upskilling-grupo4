@@ -32,31 +32,144 @@ namespace boleto_api.Controllers
 
             using (var memoryStream = new MemoryStream())
             {
-                var document = new Document(PageSize.A4, 20f, 20f, 20f, 20f);
+                var document = new Document(PageSize.A4);
                 var writer = PdfWriter.GetInstance(document, memoryStream);
                 document.Open();
-
-                var font = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                var fontSize = 12;
 
                 var logoPath = Path.Combine(AppContext.BaseDirectory, "Assets", "anima-gama.jpg");
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(logoPath);
                 logo.ScaleAbsolute(100f, 50f);
                 document.Add(logo);
 
-                AddParagraph(document, $"Banco: {boleto.NomeBanco}", font, fontSize);
-                AddParagraph(document, $"Beneficiário: {boleto.BeneficiarioNome}", font, fontSize);
-                AddParagraph(document, $"CNPJ: {boleto.BeneficiarioCnpj}", font, fontSize);
-                AddParagraph(document, $"Data de Vencimento: {boleto.DataVencimento.ToString("dd/MM/yyyy")}", font, fontSize);
-                AddParagraph(document, $"Valor: R$ {boleto.Valor:F2}", font, fontSize);
+                var baseFont = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
 
-                AddParagraph(document, $"Descrição: {boleto.Descricao}", font, fontSize);
-                AddParagraph(document, $"Pagador: {boleto.PagadorNome}", font, fontSize);
-                AddParagraph(document, $"CPF: {boleto.PagadorCpf}", font, fontSize);
+                // Definindo estilos de fonte e tamanho
+                var fonteTitulo = new Font(baseFont, 8, Font.NORMAL);
+                var fonteValor = new Font(baseFont, 10, Font.NORMAL);
+                var fonteMaior = new Font(baseFont, 16, Font.NORMAL);
 
-                AddParagraph(document, "Linha Digitável: " + boleto.LinhaDigitavel, font, fontSize);
+                var table = new PdfPTable(11)
+                {
+                    TotalWidth = 520f,
+                    LockedWidth = true
+                };
+
+                table.SetWidths(new float[] { 9.692307692307692f, 10.256410256410257f, 19.487179487179485f, 5.128205128205128f,
+                                             13.333333333333334f, 8.205128205128204f, 10.256410256410257f, 19.487179487179485f,
+                                             19.487179487179485f, 38.97435897435898f, 38.97435897435898f });
+
+                // Cabeçalho
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteTitulo)) { Border = Rectangle.NO_BORDER, FixedHeight = 14f });
+
+
+                // Código do banco e Linha Digitável
+                table.AddCell(new PdfPCell(new Phrase("123-0", fonteMaior)) { Colspan = 2, Border = Rectangle.NO_BORDER, HorizontalAlignment = Element.ALIGN_RIGHT });
+                table.AddCell(new PdfPCell(new Phrase(boleto.LinhaDigitavel, fonteMaior)) { Colspan = 10, Border = Rectangle.NO_BORDER, HorizontalAlignment = Element.ALIGN_RIGHT });
+
+                // Local de Pagamento e Vencimento
+                table.AddCell(new PdfPCell(new Phrase("Local de Pagamento", fonteTitulo)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase("Vencimento", fonteTitulo)));
+
+                // Valores de Local de Pagamento e Vencimento
+                table.AddCell(new PdfPCell(new Phrase("INTERNET BANKING", fonteValor)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase(boleto.DataVencimento.ToString("dd/MM/yyyy"), fonteValor)));
+
+                // Cedente e Agência/Código do Cedente
+                table.AddCell(new PdfPCell(new Phrase("Cedente", fonteTitulo)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase("Agência/Código do Cedente", fonteTitulo)));
+
+                // Valores de Cedente e Agência/Código do Cedente
+                table.AddCell(new PdfPCell(new Phrase("Empresa DMTW - Ânima Upskilling Grupo 4 Ltda.", fonteValor)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase("1234", fonteValor)));
+
+                // Dados do Documento
+                table.AddCell(new PdfPCell(new Phrase("Data do Documento", fonteTitulo)) { Colspan = 3 });
+                table.AddCell(new PdfPCell(new Phrase("Número do Documento", fonteTitulo)) { Colspan = 4 });
+                table.AddCell(new PdfPCell(new Phrase("Espécie", fonteTitulo)));
+                table.AddCell(new PdfPCell(new Phrase("Aceite", fonteTitulo)));
+                table.AddCell(new PdfPCell(new Phrase("Data do Processamento", fonteTitulo)));
+                table.AddCell(new PdfPCell(new Phrase("Nosso Número", fonteTitulo)));
+
+                // Valores dos Dados do Documento
+                table.AddCell(new PdfPCell(new Phrase(DateTime.UtcNow.ToString("dd/MM/yyyy"), fonteValor)) { Colspan = 3 });
+                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero, fonteValor)) { Colspan = 4 });
+                table.AddCell(new PdfPCell(new Phrase("RC", fonteValor)));
+                table.AddCell(new PdfPCell(new Phrase("N", fonteValor)));
+                table.AddCell(new PdfPCell(new Phrase(DateTime.UtcNow.ToString("dd/MM/yyyy"), fonteValor)));
+                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero, fonteValor)));
+
+                // Uso do Banco, Carteira, Moeda, Quantidade, Valor e Valor do Documento
+                table.AddCell(new PdfPCell(new Phrase("Uso do Banco", fonteTitulo)) { Colspan = 3 });
+                table.AddCell(new PdfPCell(new Phrase("Carteira", fonteTitulo)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase("Moeda", fonteTitulo)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase("Quantidade", fonteTitulo)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase("(x) Valor", fonteTitulo)));
+                table.AddCell(new PdfPCell(new Phrase("(=) Valor do Documento", fonteTitulo)));
+
+                // Valores de Uso do Banco, Carteira, Moeda, Quantidade, Valor e Valor do Documento
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 3 });
+                table.AddCell(new PdfPCell(new Phrase("SR", fonteValor)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase("R$", fonteValor)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase("1", fonteValor)) { Colspan = 2 });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)));
+                table.AddCell(new PdfPCell(new Phrase(String.Format("{0:F2}", boleto.Valor), fonteValor)));
+
+                // Instruções e Desconto
+                table.AddCell(new PdfPCell(new Phrase("Instruções", fonteTitulo)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase("(-) Desconto", fonteTitulo)));
+
+                // Valor de Instruções e Desconto
+                table.AddCell(new PdfPCell(new Phrase(boleto.Descricao, fonteValor)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)));
+
+                // Outras Deduções/Abatimento e Mora/Multa/Juros
+                table.AddCell(new PdfPCell(new Phrase("(-) Outras Deduções/Abatimento", fonteTitulo)) { Colspan = 10 });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)));
+
+                // Valor de Outras Deduções/Abatimento e Mora/Multa/Juros
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 10, Border = Rectangle.LEFT_BORDER });
+                table.AddCell(new PdfPCell(new Phrase("(+) Mora/Multa/Juros", fonteTitulo)));
+
+                // Valor de Mora/Multa/Juros
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 10, Border = Rectangle.LEFT_BORDER });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)));
+
+                // Outros Acréscimos e Valor Cobrado
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 10, Border = Rectangle.LEFT_BORDER });
+                table.AddCell(new PdfPCell(new Phrase("(+) Outros Acréscimos", fonteTitulo)));
+
+                // Valor de Outros Acréscimos e Valor Cobrado
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 10, Border = Rectangle.LEFT_BORDER });
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)));
+
+                // Linha com informações do sacado
+                table.AddCell(new PdfPCell(new Phrase("Sacado:", fonteTitulo)) { Rowspan = 3 });
+                table.AddCell(new PdfPCell(new Phrase(boleto.PagadorNome, fonteValor)) { Colspan = 8 });
+                table.AddCell(new PdfPCell(new Phrase(boleto.PagadorCpf, fonteValor)) { Colspan = 2 });
+
+                table.AddCell(new PdfPCell(new Phrase(boleto.PagadorEmail, fonteValor)) { Colspan = 10 });
+
+                table.AddCell(new PdfPCell(new Phrase(boleto.PagadorTelefone, fonteValor)) { Colspan = 10 });
+
+                // Recibo do Sacado - Autenticação Mecânica
+                table.AddCell(new PdfPCell(new Phrase("Recibo do Sacado - Autenticação Mecânica", fonteTitulo)) { Colspan = 11 });
+
+                table.AddCell(new PdfPCell(new Phrase(" ", fonteValor)) { Colspan = 11, Border = Rectangle.NO_BORDER });
+
+                document.Add(table);
+                // Linha com código de barras
                 AddBarcode(document, boleto.CodigoBarras);
-
+                
                 document.Close();
 
                 return File(memoryStream.ToArray(), "application/pdf", "boleto.pdf");

@@ -1,5 +1,7 @@
 namespace boleto_api.Models;
 
+using System.Globalization;
+
 public class Boleto
 {
     public Boleto()
@@ -35,11 +37,53 @@ public class Boleto
     public string BeneficiarioCidadeUF { get; }
 
     public string Descricao { get; set; }
+
     public void GerarLinhaDigitavelECodigoBarras()
     {
-        LinhaDigitavel = GerarValor(48);
-        CodigoBarras = GerarValor(44);
+        string primeiroSegmento = $"{CodigoBanco}{CodigoMoeda}";
+        string segundoSegmento = $"{CodigoBeneficiario}"; // Exemplo fictício de código do beneficiário
+        string terceiroSegmento = NossoNumero.PadLeft(11, '0'); // Exemplo fictício de número do documento
+        string quartoSegmento = "9"; // Exemplo fictício de dígito verificador geral
+        string quintoSegmento = $"{NossoNumero}{DataVencimento:ddMMyyyy}{Valor.ToString("F", CultureInfo.InvariantCulture).Replace(".", "").PadLeft(10, '0')}";
+
+        string linhaDigitavelSemDV = $"{primeiroSegmento}{segundoSegmento}{quartoSegmento}{quintoSegmento}";
+        string dvQuintoSegmento = CalcularDVMod10(quintoSegmento);
+        string linhaDigitavelComDV = $"{primeiroSegmento}{dvQuintoSegmento}{segundoSegmento}{terceiroSegmento}{quartoSegmento}{quintoSegmento}";
+
+        LinhaDigitavel = FormatarLinhaDigitavel(linhaDigitavelComDV);
+        CodigoBarras = LinhaDigitavel; // Exemplo fictício de código de barras
     }
+
+    private string CalcularDVMod10(string segmento)
+    {
+        int dv = 0;
+        int multiplicador = 2;
+
+        for (int i = segmento.Length - 1; i >= 0; i--)
+        {
+            int valor = int.Parse(segmento[i].ToString()) * multiplicador;
+
+            if (valor >= 10)
+                valor = (valor % 10) + 1;
+
+            dv += valor;
+
+            multiplicador = multiplicador == 2 ? 1 : 2;
+        }
+
+        int resto = dv % 10;
+        return (10 - resto).ToString();
+    }
+
+    private string FormatarLinhaDigitavel(string linhaDigitavel)
+    {
+        return $"{linhaDigitavel.Substring(0, 5)}.{linhaDigitavel.Substring(5, 5)} " +
+               $"{linhaDigitavel.Substring(10, 5)}.{linhaDigitavel.Substring(15, 6)} " +
+               $"{linhaDigitavel.Substring(21, 5)}.{linhaDigitavel.Substring(26, 6)} " +
+               $"{linhaDigitavel.Substring(32, 1)} " +
+               $"{linhaDigitavel.Substring(33)}";
+    }
+
     public static string GerarValor(int length)
     {
         var random = new Random();

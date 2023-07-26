@@ -532,9 +532,9 @@
     <Content Include="Site.Master" />
     <Content Include="Telas\Login.aspx" />
     <Content Include="Telas\CadastroCurso.aspx" />
+    <Content Include="Telas\Styles\LancamentoNota.css" />
     <Content Include="Telas\Styles\PaginaInicial.css" />
     <Content Include="Telas\Styles\RelatorioPDF.css" />
-    <Content Include="Telas\Styles\LancamentoNota.css" />
     <Content Include="Telas\Styles\CadastroCurso.css" />
     <Content Include="Telas\Styles\Login.css" />
     <Content Include="Telas\RelatorioPDF.aspx" />

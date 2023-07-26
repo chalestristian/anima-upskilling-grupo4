@@ -1,11 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LancamentoNota.aspx.cs" Inherits="WebForms2.Telas.LancamentoNota" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<html>
+<head>
     <title>Lançamento de Notas</title>
-    <link rel="stylesheet" href="Styles/LancamentoNota.css/">
+    <link rel="stylesheet" href="Styles/LancamentoNota.css">
 </head>
 <body>
     <form id="form1" runat="server" class="formLancamentoNota">

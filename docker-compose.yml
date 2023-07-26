@@ -62,6 +62,17 @@ services:
     networks:
       - anima-network
 
+  service-boleto:
+    build:
+      context: ./boleto-api
+      dockerfile: Dockerfile
+    container_name: service-boleto
+    restart: always
+    ports:
+      - 5400:5400 
+    networks:
+      - anima-network
+
 volumes:
   postgres_data:
 

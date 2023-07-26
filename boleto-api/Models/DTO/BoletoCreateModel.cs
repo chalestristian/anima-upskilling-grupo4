@@ -5,7 +5,7 @@ public class BoletoCreateModel
 {
     public DateTime DataVencimento { get; set; }
     public decimal Valor { get; set; }
-    public string NossoNumero { get; set; }
+    public int NossoNumero { get; set; }
 
     public string PagadorNome { get; set; }
     public string PagadorCpf { get; set; }

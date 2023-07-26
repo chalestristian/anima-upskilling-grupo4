@@ -16,3 +16,4 @@
 /boleto-api/obj
 /boleto-api/bin
 !/boleto-api/bin/Debug/net7.0/Assets/anima-gama.jpg
+!/boleto-api/bin/Debug/net7.0/Assets/codigobarras.png

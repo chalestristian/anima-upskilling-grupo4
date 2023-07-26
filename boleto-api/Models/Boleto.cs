@@ -6,7 +6,7 @@ public class Boleto
 {
     public Boleto()
     {
-        CodigoBanco = 104;
+        CodigoBanco = 123;
         CodigoMoeda = 9;
         CodigoBeneficiario = 1234;
         NomeBanco = "Caixa Econômica Federal";
@@ -22,7 +22,7 @@ public class Boleto
     public string NomeBanco { get; set; }
     public DateTime DataVencimento { get; set; }
     public decimal Valor { get; set; }
-    public string NossoNumero { get; set; }
+    public int NossoNumero { get; set; }
     public string LinhaDigitavel { get; set; }
     public string CodigoBarras { get; set; }
 
@@ -42,7 +42,7 @@ public class Boleto
     {
         string primeiroSegmento = $"{CodigoBanco}{CodigoMoeda}";
         string segundoSegmento = $"{CodigoBeneficiario}"; // Exemplo fictício de código do beneficiário
-        string terceiroSegmento = NossoNumero.PadLeft(11, '0'); // Exemplo fictício de número do documento
+        string terceiroSegmento = NossoNumero.ToString().PadLeft(11, '0');
         string quartoSegmento = "9"; // Exemplo fictício de dígito verificador geral
         string quintoSegmento = $"{NossoNumero}{DataVencimento:ddMMyyyy}{Valor.ToString("F", CultureInfo.InvariantCulture).Replace(".", "").PadLeft(10, '0')}";
 

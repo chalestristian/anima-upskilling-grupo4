@@ -102,11 +102,11 @@ namespace boleto_api.Controllers
 
                 // Valores dos Dados do Documento
                 table.AddCell(new PdfPCell(new Phrase(DateTime.UtcNow.ToString("dd/MM/yyyy"), fonteValor)) { Colspan = 3 });
-                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero, fonteValor)) { Colspan = 4 });
+                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero.ToString(), fonteValor)) { Colspan = 4 });
                 table.AddCell(new PdfPCell(new Phrase("RC", fonteValor)));
                 table.AddCell(new PdfPCell(new Phrase("N", fonteValor)));
                 table.AddCell(new PdfPCell(new Phrase(DateTime.UtcNow.ToString("dd/MM/yyyy"), fonteValor)));
-                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero, fonteValor)));
+                table.AddCell(new PdfPCell(new Phrase(boleto.NossoNumero.ToString(), fonteValor)));
 
                 // Uso do Banco, Carteira, Moeda, Quantidade, Valor e Valor do Documento
                 table.AddCell(new PdfPCell(new Phrase("Uso do Banco", fonteTitulo)) { Colspan = 3 });
@@ -168,8 +168,12 @@ namespace boleto_api.Controllers
 
                 document.Add(table);
                 // Linha com código de barras
-                AddBarcode(document, boleto.CodigoBarras);
-                
+                //AddBarcode(document, boleto.CodigoBarras);
+                var codigobarrasPath = Path.Combine(AppContext.BaseDirectory, "Assets", "codigobarras.png");
+                iTextSharp.text.Image codigobarras = iTextSharp.text.Image.GetInstance(codigobarrasPath);
+                codigobarras.ScaleAbsolute(500f, 50f);
+                document.Add(codigobarras);
+
                 document.Close();
 
                 return File(memoryStream.ToArray(), "application/pdf", "boleto.pdf");

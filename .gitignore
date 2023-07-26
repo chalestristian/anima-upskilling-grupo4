@@ -13,3 +13,6 @@
 /console-consumer/obj
 /console-consumer/bin
 !/api/bin/Debug/net7.0/fundo-certificado.jpg
+/boleto-api/obj
+/boleto-api/bin
+!/boleto-api/bin/Debug/net7.0/Assets/anima-gama.jpg

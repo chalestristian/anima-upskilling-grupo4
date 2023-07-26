@@ -284,7 +284,7 @@ namespace WebForms2.Telas
         protected void btnBuscarNotas_Click(object sender, EventArgs e)
         {
             int raAluno = int.Parse(txtBuscarRAAluno.Text);
-            List<NotaModulo> notas = BuscarNotasAluno(raAluno);
+            List<NotaModels> notas = BuscarNotasAluno(raAluno);
 
             if (notas.Count > 0)
             {
@@ -327,9 +327,9 @@ namespace WebForms2.Telas
             }
         }
 
-        private List<NotaModulo> BuscarNotasAluno(int raAluno)
+        private List<NotaModels> BuscarNotasAluno(int raAluno)
         {
-            List<NotaModulo> notas = new List<NotaModulo>();
+            List<NotaModels> notas = new List<NotaModels>();
 
             string connectionString = "Host=localhost;Port=54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
 
@@ -348,7 +348,7 @@ namespace WebForms2.Telas
                             int idModulo = Convert.ToInt32(reader["id_modulo"]);
                             decimal nota = Convert.ToDecimal(reader["nota"]);
 
-                            NotaModulo notaAluno = new NotaModulo
+                            NotaModels notaAluno = new NotaModels
                             {
                                 RA = raAluno,
                                 IdCurso = idCurso,

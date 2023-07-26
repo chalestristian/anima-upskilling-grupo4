@@ -6,7 +6,7 @@ using Webforms2.DTO_s;
 
 namespace Webforms2.Models
 {
-    public class NotaModulo : AlunoDTO
+    public class NotaModels : AlunoDTO
     {
         public int IdNota { get; set; }
         //public AlunosModels RA { get; set; }

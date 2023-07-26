@@ -577,7 +577,7 @@
     <Compile Include="Models\AlunosModels.cs" />
     <Compile Include="Models\CursoModels.cs" />
     <Compile Include="Models\ModuloModels.cs" />
-    <Compile Include="Models\NotaModulo.cs" />
+    <Compile Include="Models\NotaModels.cs" />
     <Compile Include="Models\PessoaModels.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

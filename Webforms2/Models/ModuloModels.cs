@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Webforms2.Models
 {
-    public class ModuloModels
+    public class ModuloModels 
     {
         public int IdModulo { get; set; }
         public string NomeModulo { get; set; }

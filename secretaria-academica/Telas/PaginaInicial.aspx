@@ -15,7 +15,9 @@
             <a href="LancamentoNota.aspx" class="btn">Lançamento de Notas</a>
             <a href="Relatorio.aspx" class="btn">Relatório de Cursos e Alunos Matriculados</a>
             <a href="Login.aspx" class="btn">Sair</a>
+
         </div>
+        
     </form>
 </body>
 </html>

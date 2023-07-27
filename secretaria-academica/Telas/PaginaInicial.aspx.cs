@@ -13,19 +13,10 @@ namespace WebForms2.Telas
             }
         }
 
-        protected void btnCadastroCurso_Click(object sender, EventArgs e)
+        protected void btnSair_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CadastroCurso.aspx");
-        }
-
-        protected void btnLancamentoNotas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("LancamentoNota.aspx");
-        }
-
-        protected void btnRelatorioCursos_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("RelatorioPDF.aspx");
+            Session["UsuarioAutenticado"] = false;
+            Response.Redirect("Login.aspx");
         }
     }
 }

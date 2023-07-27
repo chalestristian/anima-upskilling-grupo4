@@ -10,7 +10,7 @@ RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/out ./s
+COPY --from=build /app/out ./
 
 COPY Assets /app/Assets
 

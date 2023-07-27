@@ -4,6 +4,9 @@ using System.Data;
 using Npgsql;
 using System.Web.UI;
 using Webforms2.Models;
+using System.Configuration;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebForms2.Telas
 {
@@ -14,29 +17,39 @@ namespace WebForms2.Telas
             string usuarioDigitado = txtUsuario.Text;
             string senhaDigitada = txtSenha.Text;
 
-            string connectionString = "Host=localhost;Port=54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    string sql = "SELECT COUNT(*) FROM \"Usuarios\" WHERE \"Login\" = @Nome AND \"Senha\" = @Senha";
+                    string sql = "SELECT \"Senha\" FROM \"Usuarios\" WHERE \"Login\" = @Usuario";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@Nome", usuarioDigitado);
-                        cmd.Parameters.AddWithValue("@Senha", senhaDigitada);
+                        cmd.Parameters.AddWithValue("@Usuario", usuarioDigitado);
 
-                        int result = (int)cmd.ExecuteScalar();
-                        if (result > 0)
+                        var senhaCriptografadaDB = (string)cmd.ExecuteScalar();
+
+                        if (!string.IsNullOrEmpty(senhaCriptografadaDB))
                         {
-                            // Autenticação bem-sucedida
-                            Session["UsuarioAutenticado"] = true;
-                            Response.Redirect("PaginaInicial.aspx");
+                            var sha256 = new SHA256Managed();
+                            var senhaBytes = Encoding.UTF8.GetBytes(senhaDigitada);
+                            var senhaCriptografadaInput = Convert.ToBase64String(sha256.ComputeHash(senhaBytes));
+
+                            if (senhaCriptografadaInput == senhaCriptografadaDB)
+                            {
+                                Session["UsuarioAutenticado"] = true;
+                                Response.Redirect("PaginaInicial.aspx");
+                            }
+                            else
+                            {
+                                lblMensagem.Text = "Usuário ou senha inválidos.";
+                            }
                         }
                         else
                         {
-                            lblMensagem.Text = "Usuário ou senha inválidos.";
+                            lblMensagem.Text = "Usuário não encontrado.";
                         }
                     }
                 }
@@ -50,10 +63,10 @@ namespace WebForms2.Telas
         protected void Page_Load(object sender, EventArgs e)
         {
             //Redireciona para Página Inicial 
-            if (Session["UsuarioAutenticado"] != null && (bool)Session["UsuarioAutenticado"])
+            /*if (Session["UsuarioAutenticado"] != null && (bool)Session["UsuarioAutenticado"])
             {
                 Response.Redirect("PaginaInicial.aspx");
-            }
+            }*/
         }
     }
 }

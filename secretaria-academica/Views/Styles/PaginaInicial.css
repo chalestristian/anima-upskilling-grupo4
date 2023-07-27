@@ -26,8 +26,7 @@ p
     margin-bottom: 20px;
 }
 
-.btn 
-{
+.btn1 {
     display: block;
     padding: 10px 20px;
     margin: 5px;
@@ -35,24 +34,23 @@ p
     text-align: center;
     text-decoration: none;
     color: #fff;
-    background-color: #4B0082; 
+    background-color: #4B0082;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-    .btn:hover 
-    {
-        background-color: #800080;
-    }
+.btn1:hover {
+    background-color: #800080;
+}
 
 .btn-sair 
 {
     background-color: #FF0000; 
 }
 
-    .btn-sair:hover 
-    {
-        background-color: #8B0000; 
-    }
+.btn-sair:hover 
+{
+    background-color: #8B0000; 
+}

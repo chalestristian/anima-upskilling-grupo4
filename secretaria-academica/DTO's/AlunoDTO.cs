@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Webforms2.Models;
+using secretaria_academica.Models;
 
-namespace Webforms2.DTO_s
+namespace secretaria_academica.DTO
 {
     public class AlunoDTO : PessoaModels
     {

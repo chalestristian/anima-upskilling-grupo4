@@ -11,7 +11,7 @@ namespace secretaria_academica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("Telas/Login.aspx");
+            Response.Redirect("Views/Login.aspx");
         }
     }
 }

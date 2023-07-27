@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Webforms2.Models
+namespace secretaria_academica.Models
 {
     public class Usuario
     {

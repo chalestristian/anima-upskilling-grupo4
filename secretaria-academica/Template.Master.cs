@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace secretaria_academica
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Template : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("Views/Login.aspx");
+
         }
     }
 }

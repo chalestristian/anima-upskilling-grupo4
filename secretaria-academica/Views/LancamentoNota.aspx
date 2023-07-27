@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LancamentoNota.aspx.cs" Inherits="WebForms2.Telas.LancamentoNota" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="LancamentoNota.aspx.cs" Inherits="secretaria_academica.Views.LancamentoNota" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lançamento de Notas</title>
+<asp:Content ID="contentTitle" ContentPlaceHolderID="Title" runat="server">
+    Lançamento de notas
+</asp:Content>
+
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="Styles/LancamentoNota.css">
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="contentMain" ContentPlaceHolderID="ContentMain" runat="server">
     <form id="form1" runat="server" class="formLancamentoNota">
         <div class="page">
             <h1>Lançamento de Notas</h1>
@@ -55,5 +57,4 @@
                         
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

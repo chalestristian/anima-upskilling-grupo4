@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebForms2.Telas.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="secretaria_academica.Views.Login" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tela de Login</title>
+    <title>Scretaria Acadêmica - Tela de Login</title>
     <link rel="stylesheet" href="Styles/Login.css" />
 </head>
 <body>

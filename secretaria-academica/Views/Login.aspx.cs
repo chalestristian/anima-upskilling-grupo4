@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using Npgsql;
 using System.Web.UI;
-using Webforms2.Models;
+using secretaria_academica.Models;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
     public partial class Login : Page
     {

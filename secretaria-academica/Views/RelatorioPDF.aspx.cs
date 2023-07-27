@@ -9,14 +9,18 @@ using System.Web.UI.WebControls;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
-using Webforms2.Models;
+using secretaria_academica.Models;
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
     public partial class RelatorioPDF : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UsuarioAutenticado"] == null || !(bool)Session["UsuarioAutenticado"])
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
         [Obsolete]
         protected void btnAlunosCadastrados_Click(object sender, EventArgs e)
@@ -161,6 +165,11 @@ namespace WebForms2.Telas
             pdfDoc.Close();
             Response.Write(pdfDoc);
             Response.End();
+        }
+
+        protected void btnRetornarPaginaInicial_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PaginaInicial.aspx");
         }
     }
 }

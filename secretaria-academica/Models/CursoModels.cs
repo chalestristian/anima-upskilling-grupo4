@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Webforms2.DTO_s;
 
-namespace Webforms2.Models
+namespace secretaria_academica.Models
 {
     public class CursoModels
     {

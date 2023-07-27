@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using Npgsql;
-using Webforms2.Models;
+using secretaria_academica.Models;
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
     public partial class LancamentoNota : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UsuarioAutenticado"] == null || !(bool)Session["UsuarioAutenticado"])
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 List<CursoModels> cursos = GetCursosFromDatabase();
@@ -329,7 +334,7 @@ namespace WebForms2.Telas
 
         protected void btnRetornarPaginaInicial_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("PaginaInicial.aspx");
         }
 
         private List<NotaModels> BuscarNotasAluno(int raAluno)

@@ -7,56 +7,38 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForms2.Telas
+namespace secretaria_academica
 {
 
 
-    public partial class RelatorioPDF
+    public partial class Template
     {
 
         /// <summary>
-        /// Controle form1.
+        /// Controle Title.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Title;
 
         /// <summary>
-        /// Controle btnAlunosCadastrados.
+        /// Controle head.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAlunosCadastrados;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
-        /// Controle btnCursosCadastrados.
+        /// Controle ContentMain.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCursosCadastrados;
-
-        /// <summary>
-        /// Controle btnNotasLancadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNotasLancadas;
-
-        /// <summary>
-        /// Controle btnRetornarPaginaInicial.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRetornarPaginaInicial;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentMain;
     }
 }

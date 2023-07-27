@@ -7,57 +7,48 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
 
 
-    public partial class LancamentoNota
+    public partial class CadastroCurso
     {
 
         /// <summary>
-        /// Controle form1.
+        /// Controle txtNomeCurso.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeCurso;
 
         /// <summary>
-        /// Controle lblMensagem.
+        /// Controle txtCargaHoraria.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagem;
+        protected global::System.Web.UI.WebControls.TextBox txtCargaHoraria;
 
         /// <summary>
-        /// Controle lblRAAluno.
+        /// Controle txtValor.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRAAluno;
+        protected global::System.Web.UI.WebControls.TextBox txtValor;
 
         /// <summary>
-        /// Controle txtRAAluno.
+        /// Controle btnCadastrarCurso.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRAAluno;
-
-        /// <summary>
-        /// Controle lblCurso.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCurso;
+        protected global::System.Web.UI.WebControls.Button btnCadastrarCurso;
 
         /// <summary>
         /// Controle ddlCursos.
@@ -69,102 +60,66 @@ namespace WebForms2.Telas
         protected global::System.Web.UI.WebControls.DropDownList ddlCursos;
 
         /// <summary>
-        /// Controle lblModulo.
+        /// Controle btnDeletar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModulo;
+        protected global::System.Web.UI.WebControls.Button btnDeletar;
 
         /// <summary>
-        /// Controle ddlModulos.
+        /// Controle lblMensagem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlModulos;
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
 
         /// <summary>
-        /// Controle lblNota.
+        /// Controle ddlCursosModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNota;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCursosModulo;
 
         /// <summary>
-        /// Controle txtNota.
+        /// Controle txtNomeModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNota;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeModulo;
 
         /// <summary>
-        /// Controle btnSalvar.
+        /// Controle txtCargaHorariaModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvar;
+        protected global::System.Web.UI.WebControls.TextBox txtCargaHorariaModulo;
 
         /// <summary>
-        /// Controle btnRetornarPaginaInicial.
+        /// Controle btnCadastrarModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRetornarPaginaInicial;
+        protected global::System.Web.UI.WebControls.Button btnCadastrarModulo;
 
         /// <summary>
-        /// Controle lblMensagemBusca.
+        /// Controle lblMensagemModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagemBusca;
-
-        /// <summary>
-        /// Controle lblBuscarRAAluno.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBuscarRAAluno;
-
-        /// <summary>
-        /// Controle txtBuscarRAAluno.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarRAAluno;
-
-        /// <summary>
-        /// Controle btnBuscarNotas.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarNotas;
-
-        /// <summary>
-        /// Controle gridNotasLancadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridNotasLancadas;
+        protected global::System.Web.UI.WebControls.Label lblMensagemModulo;
     }
 }

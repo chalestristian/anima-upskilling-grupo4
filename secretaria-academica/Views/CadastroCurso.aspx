@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CadastroCurso.aspx.cs" Inherits="WebForms2.Telas.CadastroCurso" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="CadastroCurso.aspx.cs" Inherits="secretaria_academica.Views.CadastroCurso" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cadastro de Curso</title>
-    <link rel="stylesheet" href="Styles/CadastroCurso.css" />
-</head>
-<body>
+<asp:Content ID="contentTitle" ContentPlaceHolderID="Title" runat="server">
+    Cadastro de Cursos
+</asp:Content>
+
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="Styles/CadastroCurso.css">
+</asp:Content>
+
+<asp:Content ID="contentMain" ContentPlaceHolderID="ContentMain" runat="server">
     <form runat="server">
         <div class="page">
             <h2>Cadastro de Curso</h2>
@@ -49,5 +51,4 @@
             <asp:Label ID="lblMensagemModulo" runat="server" CssClass="mensagem"></asp:Label>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web.UI;
 using Npgsql;
-using Webforms2.Models;
+using secretaria_academica.Models;
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
     public partial class CadastroCurso : Page
     {
@@ -13,6 +13,11 @@ namespace WebForms2.Telas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UsuarioAutenticado"] == null || !(bool)Session["UsuarioAutenticado"])
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 CarregarCursosDoBanco();

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
     public partial class PaginaInicial : System.Web.UI.Page
     {
@@ -15,7 +15,11 @@ namespace WebForms2.Telas
 
         protected void btnSair_Click(object sender, EventArgs e)
         {
-            Session["UsuarioAutenticado"] = false;
+            // Apagar a sessão
+            Session.Clear(); 
+            Session.Abandon();
+            Response.Cookies.Clear();
+
             Response.Redirect("Login.aspx");
         }
     }

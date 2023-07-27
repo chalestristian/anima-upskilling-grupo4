@@ -7,47 +7,56 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForms2.Telas
+namespace secretaria_academica.Views
 {
 
 
-    public partial class Login
+    public partial class RelatorioPDF
     {
 
         /// <summary>
-        /// Controle txtUsuario.
+        /// Controle form1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controle txtSenha.
+        /// Controle btnAlunosCadastrados.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSenha;
+        protected global::System.Web.UI.WebControls.Button btnAlunosCadastrados;
 
         /// <summary>
-        /// Controle lblMensagem.
+        /// Controle btnCursosCadastrados.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagem;
+        protected global::System.Web.UI.WebControls.Button btnCursosCadastrados;
 
         /// <summary>
-        /// Controle btnEntrar.
+        /// Controle btnNotasLancadas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEntrar;
+        protected global::System.Web.UI.WebControls.Button btnNotasLancadas;
+
+        /// <summary>
+        /// Controle btnRetornarPaginaInicial.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRetornarPaginaInicial;
     }
 }

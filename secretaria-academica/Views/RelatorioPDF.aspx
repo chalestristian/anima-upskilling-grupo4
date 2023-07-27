@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RelatorioPDF.aspx.cs" Inherits="WebForms2.Telas.RelatorioPDF" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="RelatorioPDF.aspx.cs" Inherits="secretaria_academica.Views.RelatorioPDF" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Relatórios em PDF</title>
-    <link rel="stylesheet" href="RelatorioPDF.css" />
-</head>
-<body>
+<asp:Content ID="contentTitle" ContentPlaceHolderID="Title" runat="server">
+    Relatório
+</asp:Content>
+
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="Styles/RelatorioPDF.css">
+</asp:Content>
+
+<asp:Content ID="contentMain" ContentPlaceHolderID="ContentMain" runat="server">
     <form id="form1" runat="server">
         <div class="container">
             <h1>Relatórios em PDF</h1>
@@ -19,5 +21,4 @@
             <asp:Button ID="btnRetornarPaginaInicial" runat="server" Text="Retornar à Página Inicial" OnClick="btnRetornarPaginaInicial_Click" CssClass="btn btn-sair" />
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

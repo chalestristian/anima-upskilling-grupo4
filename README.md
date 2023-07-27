@@ -37,8 +37,13 @@ curl --location 'http://localhost:5200/connect/token' \
 --data-urlencode 'scope=<SCOPO>'
 ``
 
+#API
 A API poderá ser acessada como:
 http://localhost:5100
+
+![foto-api](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/ad1b5d8b-701d-4945-897b-31bdfac8f767)
+
+# Banco de Dados
 
 O banco de dados pode ser acessado utilizando estes dados:
 

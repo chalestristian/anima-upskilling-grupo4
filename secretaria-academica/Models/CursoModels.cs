@@ -56,6 +56,49 @@ namespace secretaria_academica.Models
 
             return curso;
         }
+
+        public static List<CursoModels> GetAllCursos()
+        {
+            List<CursoModels> cursos = new List<CursoModels>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string sql = "SELECT * FROM \"Cursos\" order by \"Nome\" "; 
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
+                    {
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CursoModels curso = new CursoModels
+                                {
+                                    IdCurso = Convert.ToInt32(reader["Id"]),
+                                    NomeCurso = reader["Nome"].ToString(),
+                                    CargaHoraria = Convert.ToInt32(reader["CH"]),
+                                    ValorCurso = Convert.ToDecimal(reader["Valor"])
+                                };
+                                cursos.Add(curso);
+                            }
+                        }
+                    }
+                }
+                catch (NpgsqlException ex)
+                {
+                    // Lógica para tratamento de exceção
+                }
+                catch (Exception ex)
+                {
+                    // Lógica para tratamento de exceção
+                }
+            }
+
+            return cursos;
+        }
     }
 }
 

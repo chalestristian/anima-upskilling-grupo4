@@ -16,7 +16,7 @@
             </p>
             <a href="CadastroCurso.aspx" class="btn1">Cadastro de Curso</a>
             <a href="GestaoMatriculas.aspx" class="btn1">Gerenciar Matrículas</a>
-            <a href="LancamentoNota.aspx" class="btn1">Lançamento de Notas</a>
+            <a href="LancarNotas.aspx" class="btn1">Lançamento de Notas</a>
             <!-- <a href="RelatorioPDF.aspx" class="btn1">Relatórios</a> -->
             <asp:Button ID="btnSair" runat="server" Text="Sair" CssClass="btn btn-danger" OnClick="btnSair_Click" />
 

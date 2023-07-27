@@ -93,8 +93,7 @@ namespace secretaria_academica.Views
                                         NomePessoa = nomeAluno,
                                         CPF = cpfAluno,
                                         Email = emailAluno
-                                    },
-                                    Matricula = matriculaAluno
+                                    }
                                 };
 
                                 CursoModels curso = new CursoModels

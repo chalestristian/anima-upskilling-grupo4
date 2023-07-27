@@ -25,7 +25,7 @@ namespace secretaria_academica.Views
         [Obsolete]
         protected void btnAlunosCadastrados_Click(object sender, EventArgs e)
         {
-            List<AlunosModels> alunos = ObterAlunosCadastrados();
+            List<AlunoModels> alunos = ObterAlunosCadastrados();
             GerarRelatorioPDF("Alunos Cadastrados", alunos);
         }
         [Obsolete]
@@ -42,9 +42,9 @@ namespace secretaria_academica.Views
             GerarRelatorioPDF("Notas Lançadas", notas);
         }
 
-        private List<AlunosModels> ObterAlunosCadastrados()
+        private List<AlunoModels> ObterAlunosCadastrados()
         {
-            List<AlunosModels> alunos = new List<AlunosModels>();
+            List<AlunoModels> alunos = new List<AlunoModels>();
 
             string connectionString = "Host=localhost;Port=54321;Username=postgres;Password=postgres;Database=UpskillingGrupo4Final";
             string query = "SELECT * FROM Alunos";
@@ -58,10 +58,10 @@ namespace secretaria_academica.Views
 
                     while (reader.Read())
                     {
-                        AlunosModels aluno = new AlunosModels
+                        AlunoModels aluno = new AlunoModels
                         {
-                            RA = Convert.ToInt32(reader["RA"]),
-                            Nome = reader["Nome"].ToString()
+                            //Matricula = Convert.ToInt32(reader["RA"]),
+                            //Nome = reader["Nome"].ToString()
                         };
                         alunos.Add(aluno);
                     }
@@ -122,9 +122,9 @@ namespace secretaria_academica.Views
                     {
                         NotaModels nota = new NotaModels
                         {
-                            RA = Convert.ToInt32(reader["ra_aluno"]),
-                            Nota = Convert.ToDecimal(reader["nota"]),
-                            DataLancamento = Convert.ToDateTime(reader["data_lancamento"])
+                            //RA = Convert.ToInt32(reader["ra_aluno"]),
+                            //Nota = Convert.ToDecimal(reader["nota"]),
+                            //DataLancamento = Convert.ToDateTime(reader["data_lancamento"])
                         };
                         notas.Add(nota);
                     }

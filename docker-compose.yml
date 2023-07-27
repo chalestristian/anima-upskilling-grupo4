@@ -73,6 +73,47 @@ services:
     networks:
       - anima-network
 
+  service-academico:
+    build:
+      context: ./secretaria-academica
+      dockerfile: Dockerfile
+    container_name: service-academico
+    restart: always
+  depends_on:
+      - service-postgres 
+    ports:
+      - 5600:5600 
+    networks:
+      - anima-network
+ 
+  service-inscricao:
+    build:
+      context: ./inscricao-upskilling/inscricao-upskilling
+      dockerfile: Dockerfile
+    container_name: service-inscricao
+    restart: always
+    depends_on:
+      - service-postgres 
+    ports:
+      - 5700:5700 
+    networks:
+      - anima-network
+ 
+  service-aluno:
+    build:
+      context: ./area-do-aluno-upskilling
+      dockerfile: Dockerfile
+    container_name: service-aluno
+    restart: always
+    depends_on:
+      - service-postgres 
+      - service-identity 
+      - service-api
+    ports:
+      - 5800:5800 
+    networks:
+      - anima-network
+
 volumes:
   postgres_data:
 

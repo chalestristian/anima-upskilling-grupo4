@@ -94,7 +94,8 @@ namespace api.Controllers
             {
                 Pessoa = pessoaExistente,
                 Login = usuarioCreateModel.Login,
-                Senha = HashSenha(usuarioCreateModel.Senha, GenerateSalt()),
+                //Senha = HashSenha(usuarioCreateModel.Senha, GenerateSalt()),
+                Senha = usuarioCreateModel.Senha,
                 Aluno = alunoExistente,
                 PerfilAluno = usuarioCreateModel.PerfilAluno,
                 DataCadastro = DateTime.UtcNow 
@@ -152,7 +153,8 @@ namespace api.Controllers
                 .Include(u => u.Aluno)
                 .FirstOrDefault(u => u.Login == loginRequest.Login);
 
-            if (usuario == null || !VerificarSenha(loginRequest.Senha, usuario.Senha))
+            //if (usuario == null || !VerificarSenha(loginRequest.Senha, usuario.Senha))
+            if (usuario == null || loginRequest.Senha != usuario.Senha )
             {
                 return Unauthorized("Nome de usuário ou senha incorretos.");
             }
@@ -162,7 +164,7 @@ namespace api.Controllers
             return Ok(usuario);
         }
 
-        private byte[] GenerateSalt()
+  /*      private byte[] GenerateSalt()
         {
             byte[] salt = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
@@ -170,9 +172,9 @@ namespace api.Controllers
                 rng.GetBytes(salt);
             }
             return salt;
-        }
+        }*/
 
-        private string HashSenha(string senha, byte[] salt)
+      /*  private string HashSenha(string senha, byte[] salt)
         {
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: senha,
@@ -190,6 +192,6 @@ namespace api.Controllers
 
             string senhaHash = HashSenha(senha, salt);
             return hashSalvo == senhaHash;
-        }
+        }*/
     }
 }

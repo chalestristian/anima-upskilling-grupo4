@@ -18,8 +18,6 @@ namespace identity
             Environment = environment;
         }
         
-        string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
@@ -31,17 +29,6 @@ namespace identity
 
             services.AddControllers();
 
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                     policy =>
-                     {
-                         policy.WithOrigins("http://localhost:5173")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                     });
-            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -51,10 +38,16 @@ namespace identity
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+                        .AllowAnyMethod()
+                        //.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed(origin => true) // allow any origin
+                        .AllowCredentials());
+
             // uncomment if you want to add MVC
             //app.UseStaticFiles();
             //app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
             app.UseIdentityServer();
 
             // uncomment, if you want to add MVC

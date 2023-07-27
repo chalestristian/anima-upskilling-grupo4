@@ -8,10 +8,11 @@ using System.Configuration;
 
 namespace secretaria_academica.Views
 {
-    public partial class CadastroCurso : Page
+    public partial class CadastroModulos : Page
     {
-        private List<CursoModels> cursos = new List<CursoModels>();
+        private int idCurso;
         private List<ModuloModels> modulos = new List<ModuloModels>();
+        private CursoModels curso;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,37 +21,49 @@ namespace secretaria_academica.Views
                 Response.Redirect("Login.aspx");
             }
 
+            if (Request.QueryString["idCurso"] != null)
+            {
+                idCurso = Convert.ToInt32(Request.QueryString["idCurso"]);
+                curso = CursoModels.getByID(idCurso);
+            }
+            else
+            {
+                Response.Redirect($"CadastroModulos.aspx?idCurso={idCurso}");
+            }
+
             if (!IsPostBack)
             {
-                CarregarCursosDoBanco();
+                CarregarModulosDoBanco();
             }
         }
 
-        protected void btnCadastrarCurso_Click(object sender, EventArgs e)
+        protected void btnCadastrarModulo_Click(object sender, EventArgs e)
         {
-            string nomeCurso = txtNomeCurso.Text;
+            string nomeModulo = txtNomeModulo.Text;
             int? cargaHoraria = null;
-            decimal? valor = null;
 
             if (!string.IsNullOrEmpty(txtCargaHoraria.Text))
                 cargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
 
-            if (!string.IsNullOrEmpty(txtValor.Text))
-                valor = Convert.ToDecimal(txtValor.Text);
-
-            CursoModels curso = new CursoModels
+            ModuloModels modulo = new ModuloModels
             {
-                NomeCurso = nomeCurso,
-                CargaHoraria = cargaHoraria,
-                ValorCurso = valor
+                Curso = curso,
+                NomeModulo = nomeModulo,
+                CHModulo = cargaHoraria
             };
 
-            AdicionarCursoAoBanco(curso);
+            AdicionarModuloAoBanco(modulo);
         }
 
-        private void CarregarCursosDoBanco()
+        private void CarregarModulosDoBanco()
         {
-            cursos.Clear();
+            txtNomeModulo.Text = string.Empty;
+            txtCargaHoraria.Text = string.Empty;
+
+            txtNomeModuloEdicao.Text = string.Empty;
+            txtCargaHorariaEdicao.Text = string.Empty;
+
+            modulos.Clear();
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
@@ -58,33 +71,33 @@ namespace secretaria_academica.Views
                 try
                 {
                     con.Open();
-                    string sql = "SELECT * FROM \"Cursos\"";
+                    string sql = "SELECT * FROM \"ModulosCursos\" where \"CursoId\" = @CursoId";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
+                        cmd.Parameters.AddWithValue("@CursoId", idCurso);
                         using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                int idCurso = Convert.ToInt32(reader["Id"]);
-                                string nomeCurso = reader["Nome"].ToString();
+                                int idModulo = Convert.ToInt32(reader["Id"]);
                                 int cargaHoraria = Convert.ToInt32(reader["CH"]);
-                                decimal valor = Convert.ToDecimal(reader["Valor"]);
+                                string nomeModulo = Convert.ToString(reader["Nome"]);
 
-                                CursoModels curso = new CursoModels
+                                ModuloModels modulo = new ModuloModels
                                 {
-                                    IdCurso = idCurso,
-                                    NomeCurso = nomeCurso,
-                                    CargaHoraria = cargaHoraria,
-                                    ValorCurso = valor
+                                    IdModulo = idModulo,
+                                    Curso = curso,
+                                    NomeModulo = nomeModulo,
+                                    CHModulo = cargaHoraria,
                                 };
 
-                                cursos.Add(curso);
+                                modulos.Add(modulo);
                             }
                         }
                     }
 
-                    gridCursos.DataSource = cursos;
-                    gridCursos.DataBind();
+                    gridModulos.DataSource = modulos;
+                    gridModulos.DataBind();
                 }
                 catch (NpgsqlException ex)
                 {
@@ -97,7 +110,7 @@ namespace secretaria_academica.Views
             }
         }
 
-        private void AdicionarCursoAoBanco(CursoModels curso)
+        private void AdicionarModuloAoBanco(ModuloModels modulo)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
@@ -106,22 +119,22 @@ namespace secretaria_academica.Views
                 try
                 {
                     con.Open();
-                    string sql = "INSERT INTO \"Cursos\" (\"Nome\", \"CH\", \"Valor\") VALUES (@Nome, @CH, @Valor)";
+                    string sql = "INSERT INTO \"ModulosCursos\" (\"Nome\", \"CH\", \"CursoId\") VALUES (@Nome, @CH, @CursoId)";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@Nome", curso.NomeCurso);
-                        cmd.Parameters.AddWithValue("@CH", curso.CargaHoraria);
-                        cmd.Parameters.AddWithValue("@Valor", curso.ValorCurso);
+                        cmd.Parameters.AddWithValue("@Nome", modulo.NomeModulo);
+                        cmd.Parameters.AddWithValue("@CH", modulo.CHModulo);
+                        cmd.Parameters.AddWithValue("@CursoId", idCurso);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            lblMensagemSucesso.Text = "Curso adicionado com sucesso!";
-                            CarregarCursosDoBanco();
+                            lblMensagemSucesso.Text = "Módulo adicionado com sucesso!";
+                            CarregarModulosDoBanco();
                         }
                         else
                         {
-                            lblMensagemErro.Text = "Ocorreu um erro ao adicionar o curso.";
+                            lblMensagemErro.Text = "Ocorreu um erro ao adicionar o módulo.";
                         }
                     }
                 }
@@ -136,7 +149,7 @@ namespace secretaria_academica.Views
             }
         }
 
-        private void DeletarCursoDoBanco(int idCurso)
+        private void DeletarModuloDoBanco(int idModulo)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
@@ -145,20 +158,20 @@ namespace secretaria_academica.Views
                 try
                 {
                     con.Open();
-                    string sql = "DELETE FROM \"Cursos\" WHERE \"Id\" = @IdCurso";
+                    string sql = "DELETE FROM \"ModulosCursos\" WHERE \"Id\" = @IdModulo";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@IdCurso", idCurso);
+                        cmd.Parameters.AddWithValue("@IdModulo", idModulo);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            lblMensagemSucesso.Text = "Curso excluído com sucesso!";
-                            CarregarCursosDoBanco();
+                            lblMensagemSucesso.Text = "Módulo excluído com sucesso!";
+                            CarregarModulosDoBanco();
                         }
                         else
                         {
-                            lblMensagemErro.Text = "Ocorreu um erro ao deletar o curso.";
+                            lblMensagemErro.Text = "Ocorreu um erro ao deletar o módulo.";
                         }
                     }
                 }
@@ -173,46 +186,43 @@ namespace secretaria_academica.Views
             }
         }
 
-        protected void gridCursos_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gridModulos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int idCurso = Convert.ToInt32(e.CommandArgument);
+            int idModulo = Convert.ToInt32(e.CommandArgument);
 
             if (e.CommandName == "Editar")
             {
-                CursoModels curso = ObterCursoPorId(idCurso);
-                if (curso != null)
+                ModuloModels modulo = ObterModuloPorId(idModulo);
+                if (modulo != null)
                 {
-                    hdnIdCurso.Value = idCurso.ToString();
-                    txtNomeCursoEdicao.Text = curso.NomeCurso;
-                    txtCargaHorariaEdicao.Text = curso.CargaHoraria?.ToString();
-                    txtValorEdicao.Text = curso.ValorCurso?.ToString();
+                    hdnIdModulo.Value = idModulo.ToString();
+                    txtNomeModuloEdicao.Text = modulo.NomeModulo;
+                    txtCargaHorariaEdicao.Text = modulo.CHModulo?.ToString();
 
                     divCadastro.Visible = false;
                     divEdicao.Visible = true;
                 }
             }
-            else if (e.CommandName == "GerenciarModulos")
-            {
-                Response.Redirect($"CadastroModulos.aspx?idCurso={idCurso}");
-            }
             else if (e.CommandName == "Excluir")
             {
-                DeletarCursoDoBanco(idCurso);
-                CarregarCursosDoBanco();
+                DeletarModuloDoBanco(idModulo);
+                CarregarModulosDoBanco();
             }
         }
 
-        protected void gridCursos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gridModulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gridCursos.PageIndex = e.NewPageIndex;
-            gridCursos.DataBind();
+            gridModulos.PageIndex = e.NewPageIndex;
+            gridModulos.DataBind();
         }
 
         protected void btnCancelarEdicao_Click(object sender, EventArgs e)
         {
-            txtNomeCursoEdicao.Text = string.Empty;
+            txtNomeModuloEdicao.Text = string.Empty;
             txtCargaHorariaEdicao.Text = string.Empty;
-            txtValorEdicao.Text = string.Empty;
+
+            txtNomeModulo.Text = string.Empty;
+            txtCargaHoraria.Text = string.Empty;
 
             divCadastro.Visible = true;
             divEdicao.Visible = false;
@@ -220,64 +230,58 @@ namespace secretaria_academica.Views
 
         protected void btnSalvarEdicao_Click(object sender, EventArgs e)
         {
-            int idCurso = Convert.ToInt32(hdnIdCurso.Value);
+            int idCurso = Convert.ToInt32(hdnIdModulo.Value);
 
-            CursoModels cursoAtual = ObterCursoPorId(idCurso);
-            if (cursoAtual != null)
+            ModuloModels moduloAtual = ObterModuloPorId(idCurso);
+            if (moduloAtual != null)
             {
-                cursoAtual.NomeCurso = txtNomeCursoEdicao.Text;
+                moduloAtual.NomeModulo = txtNomeModuloEdicao.Text;
                 if (!string.IsNullOrEmpty(txtCargaHorariaEdicao.Text))
-                    cursoAtual.CargaHoraria = Convert.ToInt32(txtCargaHorariaEdicao.Text);
+                    moduloAtual.CHModulo = Convert.ToInt32(txtCargaHorariaEdicao.Text);
                 else
-                    cursoAtual.CargaHoraria = null;
+                    moduloAtual.CHModulo = null;
 
-                if (!string.IsNullOrEmpty(txtValorEdicao.Text))
-                    cursoAtual.ValorCurso = Convert.ToDecimal(txtValorEdicao.Text);
-                else
-                    cursoAtual.ValorCurso = null;
-
-                // Salvar as alterações no banco de dados (ou na lista de cursos)
-                AtualizarCursoNoBanco(cursoAtual);
+                // Salvar as alterações no banco de dados (ou na lista de módulos)
+                AtualizarModuloNoBanco(moduloAtual);
 
                 // Limpar o formulário de edição
-                txtNomeCursoEdicao.Text = string.Empty;
+                txtNomeModuloEdicao.Text = string.Empty;
                 txtCargaHorariaEdicao.Text = string.Empty;
-                txtValorEdicao.Text = string.Empty;
 
                 // Mostrar o formulário de cadastro e ocultar o formulário de edição
                 divCadastro.Visible = true;
                 divEdicao.Visible = false;
 
-                // Atualizar a lista de cursos exibida no GridView
-                CarregarCursosDoBanco();
+                // Atualizar a lista de módulos exibida no GridView
+                CarregarModulosDoBanco();
             }
         }
 
-        private CursoModels ObterCursoPorId(int idCurso)
+        private ModuloModels ObterModuloPorId(int idModulo)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            CursoModels curso = null;
+            ModuloModels modulo = null;
 
             using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
             {
                 try
                 {
                     con.Open();
-                    string sql = "SELECT * FROM \"Cursos\" WHERE \"Id\" = @IdCurso";
+                    string sql = "SELECT * FROM \"ModulosCursos\" WHERE \"Id\" = @IdModulo";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@IdCurso", idCurso);
+                        cmd.Parameters.AddWithValue("@IdModulo", idModulo);
 
                         using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                curso = new CursoModels
+                                modulo = new ModuloModels
                                 {
-                                    IdCurso = Convert.ToInt32(reader["Id"]),
-                                    NomeCurso = reader["Nome"].ToString(),
-                                    CargaHoraria = Convert.ToInt32(reader["CH"]),
-                                    ValorCurso = Convert.ToDecimal(reader["Valor"])
+                                    IdModulo = Convert.ToInt32(reader["Id"]),
+                                    Curso = CursoModels.getByID(Convert.ToInt32(reader["CursoId"])),
+                                    NomeModulo = reader["Nome"].ToString(),
+                                    CHModulo = Convert.ToInt32(reader["CH"]),
                                 };
                             }
                         }
@@ -293,10 +297,10 @@ namespace secretaria_academica.Views
                 }
             }
 
-            return curso;
+            return modulo;
         }
 
-        private void AtualizarCursoNoBanco(CursoModels curso)
+        private void AtualizarModuloNoBanco(ModuloModels modulo)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
@@ -305,22 +309,22 @@ namespace secretaria_academica.Views
                 try
                 {
                     con.Open();
-                    string sql = "UPDATE \"Cursos\" SET \"Nome\" = @Nome, \"CH\" = @CH, \"Valor\" = @Valor WHERE \"Id\" = @IdCurso";
+                    string sql = "UPDATE \"ModulosCursos\" SET \"Nome\" = @Nome, \"CH\" = @CH, \"CursoId\" = @CursoId WHERE \"Id\" = @IdModulo";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@IdCurso", curso.IdCurso);
-                        cmd.Parameters.AddWithValue("@Nome", curso.NomeCurso);
-                        cmd.Parameters.AddWithValue("@CH", curso.CargaHoraria);
-                        cmd.Parameters.AddWithValue("@Valor", curso.ValorCurso);
+                        cmd.Parameters.AddWithValue("@IdModulo", modulo.IdModulo);
+                        cmd.Parameters.AddWithValue("@Nome", modulo.NomeModulo);
+                        cmd.Parameters.AddWithValue("@CH", modulo.CHModulo);
+                        cmd.Parameters.AddWithValue("@CursoId", modulo.Curso.IdCurso);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            lblMensagemSucesso.Text = "Curso atualizado com sucesso!";
+                            lblMensagemSucesso.Text = "Módulo atualizado com sucesso!";
                         }
                         else
                         {
-                            lblMensagemErro.Text = "Ocorreu um erro ao atualizar o curso.";
+                            lblMensagemErro.Text = "Ocorreu um erro ao atualizar o módulo.";
                         }
                     }
                 }
@@ -337,7 +341,7 @@ namespace secretaria_academica.Views
 
         protected void btnVoltarParaTelaAnterior_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PaginaInicial.aspx");
+            Response.Redirect("CadastroCurso.aspx");
         }
     }
 

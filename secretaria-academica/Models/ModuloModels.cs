@@ -9,7 +9,7 @@ namespace secretaria_academica.Models
     {
         public int IdModulo { get; set; }
         public string NomeModulo { get; set; }
-        public int CHModulo { get; set; }
+        public int? CHModulo { get; set; }
 
         public CursoModels Curso { get; set; }
     }

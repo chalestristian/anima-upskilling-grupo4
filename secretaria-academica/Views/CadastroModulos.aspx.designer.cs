@@ -11,7 +11,7 @@ namespace secretaria_academica.Views
 {
 
 
-    public partial class CadastroCurso
+    public partial class CadastroModulos
     {
 
         /// <summary>
@@ -51,13 +51,13 @@ namespace secretaria_academica.Views
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCadastro;
 
         /// <summary>
-        /// Controle txtNomeCurso.
+        /// Controle txtNomeModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomeCurso;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeModulo;
 
         /// <summary>
         /// Controle txtCargaHoraria.
@@ -67,15 +67,6 @@ namespace secretaria_academica.Views
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCargaHoraria;
-
-        /// <summary>
-        /// Controle txtValor.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValor;
 
         /// <summary>
         /// Controle Button1.
@@ -96,13 +87,13 @@ namespace secretaria_academica.Views
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEdicao;
 
         /// <summary>
-        /// Controle txtNomeCursoEdicao.
+        /// Controle txtNomeModuloEdicao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomeCursoEdicao;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeModuloEdicao;
 
         /// <summary>
         /// Controle txtCargaHorariaEdicao.
@@ -114,22 +105,13 @@ namespace secretaria_academica.Views
         protected global::System.Web.UI.WebControls.TextBox txtCargaHorariaEdicao;
 
         /// <summary>
-        /// Controle txtValorEdicao.
+        /// Controle hdnIdModulo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValorEdicao;
-
-        /// <summary>
-        /// Controle hdnIdCurso.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnIdCurso;
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdModulo;
 
         /// <summary>
         /// Controle btnSalvarEdicao.
@@ -150,12 +132,12 @@ namespace secretaria_academica.Views
         protected global::System.Web.UI.WebControls.Button btnCancelarEdicao;
 
         /// <summary>
-        /// Controle gridCursos.
+        /// Controle gridModulos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridCursos;
+        protected global::System.Web.UI.WebControls.GridView gridModulos;
     }
 }

@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.Master" AutoEventWireup="true" CodeBehind="LancamentoNota.aspx.cs" Inherits="secretaria_academica.Views.LancamentoNota" %>
 
 <asp:Content ID="contentTitle" ContentPlaceHolderID="Title" runat="server">
-    Lançamento de notas
-</asp:Content>
+    Lançamento de notas</asp:Content>
 
 <asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="Styles/LancamentoNota.css">

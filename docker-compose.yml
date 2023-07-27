@@ -79,7 +79,7 @@ services:
       dockerfile: Dockerfile
     container_name: service-academico
     restart: always
-  depends_on:
+    depends_on:
       - service-postgres 
     ports:
       - 5600:5600 

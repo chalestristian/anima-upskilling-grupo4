@@ -14,9 +14,6 @@
             <h2 class="text-center">Lançar Notas</h2>
             <asp:Button ID="btnVoltarParaTelaAnterior" runat="server" Text="Voltar para tela principal" OnClick="btnVoltarParaTelaAnterior_Click" CssClass="d-block mb-3 btn btn-secondary"  />
 
-            <asp:Label ID="lblMensagemErro" runat="server" CssClass="mb-3 mt-3 text-danger"></asp:Label>
-            <asp:Label ID="lblMensagemSucesso" runat="server" CssClass="mb-3 mt-3 text-success"></asp:Label>
-
             <div class="form-group">
                 <label for="ddlCurso">Selecione o Curso:</label>
                 <asp:DropDownList ID="ddlCurso" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCurso_SelectedIndexChanged"></asp:DropDownList>
@@ -41,6 +38,11 @@
 
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar Notas" OnClick="btnSalvar_Click" CssClass="btn btn-primary mt-3" />
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CssClass="btn mt-4" />
+
+            <div class="row">
+                <asp:Label ID="lblMensagemErro" runat="server" CssClass="mb-3 mt-3 text-danger"></asp:Label>
+                <asp:Label ID="lblMensagemSucesso" runat="server" CssClass="mb-3 mt-3 text-success"></asp:Label>
+            </div>
         </div>
     </form>
 </asp:Content>

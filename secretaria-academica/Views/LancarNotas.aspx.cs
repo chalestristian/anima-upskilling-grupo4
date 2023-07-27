@@ -161,8 +161,15 @@ namespace secretaria_academica.Views
         {
             List<NotaModels> notas = NotaModels.GetNotasDoAlunoPorCurso(matriculaId, cursoId);
             decimal somaNotas = notas.Sum(nota => nota.Nota);
-            decimal media = somaNotas / notas.Count;
-            return media;
+            if (notas.Count > 0)
+            {
+                decimal media = somaNotas / notas.Count;
+                return media;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private string ObterStatus(decimal media)

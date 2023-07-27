@@ -24,24 +24,6 @@ namespace secretaria_academica.Views
         protected global::System.Web.UI.WebControls.Button btnVoltarParaTelaAnterior;
 
         /// <summary>
-        /// Controle lblMensagemErro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagemErro;
-
-        /// <summary>
-        /// Controle lblMensagemSucesso.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagemSucesso;
-
-        /// <summary>
         /// Controle ddlCurso.
         /// </summary>
         /// <remarks>
@@ -85,5 +67,23 @@ namespace secretaria_academica.Views
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+
+        /// <summary>
+        /// Controle lblMensagemErro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensagemErro;
+
+        /// <summary>
+        /// Controle lblMensagemSucesso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensagemSucesso;
     }
 }

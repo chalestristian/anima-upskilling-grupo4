@@ -71,9 +71,9 @@ namespace secretaria_academica.Models
                 try
                 {
                     con.Open();
-                    string sql = "UPDATE Matricula " +
-                                 "SET Media = @Media, Status = @Status " +
-                                 "WHERE AlunoId = @AlunoId and CursoId = @CursoId";
+                    string sql = "UPDATE \"Matriculas\" " +
+                                 "SET \"Media\" = @Media, \"Status\" = @Status " +
+                                 "WHERE \"AlunoId\" = @AlunoId and \"CursoId\" = @CursoId";
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
@@ -100,13 +100,12 @@ namespace secretaria_academica.Models
                 try
                 {
                     con.Open();
-                    string sql = "UPDATE Matricula " +
-                                 "SET DataConclusao = @DataConclusao " +
-                                 "WHERE AlunoId = @AlunoId  and CursoId = @CursoId AND (DataConclusao IS NULL OR DataConclusao = '')";
+                    string sql = "UPDATE \"Matriculas\" " +
+                                 "SET \"DataConclusao\" = NOW() " +
+                                 "WHERE \"AlunoId\" = @AlunoId  and \"CursoId\" = @CursoId AND (\"DataConclusao\" IS NULL)";
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@DataConclusao", DateTime.Now);
                         cmd.Parameters.AddWithValue("@AlunoId", alunoId);
                         cmd.Parameters.AddWithValue("@CursoId", cursoId);
 

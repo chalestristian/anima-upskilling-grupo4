@@ -28,7 +28,7 @@ namespace secretaria_academica.Models
                 {
                     con.Open();
                     string sql = "SELECT \"Nota\" FROM \"Notas\" " +
-                                 "WHERE \"CursoId\" = @CursoId AND \"AlunoId\" = @AlunoId AND \"ModuloId\" = @moduloId";
+                                 "WHERE \"MatriculaId\" = (select \"Id\" from \"Matriculas\" where \"CursoId\" = @CursoId AND \"AlunoId\" = @AlunoId limit 1) AND \"ModuloId\" = @moduloId";
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@CursoId", cursoId);
@@ -62,7 +62,7 @@ namespace secretaria_academica.Models
                 try
                 {
                     con.Open();
-                    string selectSql = "SELECT COUNT(*) FROM Notas WHERE CursoId = @CursoId AND MatriculaId = @MatriculaId AND ModuloId = @ModuloNome";
+                    string selectSql = "SELECT COUNT(*) FROM \"Notas\" where \"MatriculaId\" = (select \"Id\" from \"Matriculas\" where \"CursoId\" = @CursoId AND \"AlunoId\" = @MatriculaId limit 1) AND \"ModuloId\" = @ModuloId";
                     using (NpgsqlCommand selectCmd = new NpgsqlCommand(selectSql, con))
                     {
                         selectCmd.Parameters.AddWithValue("@CursoId", cursoId);
@@ -72,7 +72,7 @@ namespace secretaria_academica.Models
                         int count = Convert.ToInt32(selectCmd.ExecuteScalar());
                         if (count > 0)
                         {
-                            string updateSql = "UPDATE Notas SET Nota = @Nota WHERE CursoId = @CursoId AND MatriculaId = @MatriculaId AND ModuloId = @ModuloNome";
+                            string updateSql = "UPDATE \"Notas\" SET \"Nota\" = @Nota WHERE \"MatriculaId\" = (select \"Id\" from \"Matriculas\" where \"CursoId\" = @CursoId AND \"AlunoId\" = @MatriculaId limit 1) AND \"ModuloId\" = @ModuloId";
                             using (NpgsqlCommand updateCmd = new NpgsqlCommand(updateSql, con))
                             {
                                 updateCmd.Parameters.AddWithValue("@Nota", nota);
@@ -85,7 +85,7 @@ namespace secretaria_academica.Models
                         }
                         else
                         {
-                            string insertSql = "INSERT INTO Notas (CursoId, AlunoId, ModuloNome, Nota) VALUES (@CursoId, @MatriculaId, @ModuloId, @Nota)";
+                            string insertSql = "INSERT INTO \"Notas\" (\"MatriculaId\", \"ModuloId\", \"Nota\") VALUES ((select \"Id\" from \"Matriculas\" where \"CursoId\" = @CursoId AND \"AlunoId\" = @MatriculaId limit 1), @ModuloId, @Nota)";
                             using (NpgsqlCommand insertCmd = new NpgsqlCommand(insertSql, con))
                             {
                                 insertCmd.Parameters.AddWithValue("@CursoId", cursoId);
@@ -115,10 +115,8 @@ namespace secretaria_academica.Models
                 try
                 {
                     con.Open();
-                    string sql = "SELECT n.* FROM Notas n " +
-                                 "INNER JOIN Alunos a ON n.AlunoId = a.Id " +
-                                 "INNER JOIN Matriculas m ON a.MatriculaId = m.Id " +
-                                 "WHERE n.AlunoId = @MatriculaId AND n.CursoId = @CursoId";
+                    string sql = "SELECT n.* FROM \"Notas\" n " +
+                                 "where \"MatriculaId\" = (select \"Id\" from \"Matriculas\" where \"CursoId\" = @CursoId AND \"AlunoId\" = @MatriculaId limit 1) ";
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(sql, con))
                     {
@@ -131,9 +129,6 @@ namespace secretaria_academica.Models
                             {
                                 NotaModels nota = new NotaModels
                                 {
-                                    Curso = new CursoModels { IdCurso = Convert.ToInt32(reader["CursoId"]) },
-                                    Aluno = new AlunoModels { Id = Convert.ToInt32(reader["AlunoId"]) },
-                                    Modulo = new ModuloModels { IdModulo = Convert.ToInt32(reader["ModuloId"]) },
                                     Nota = Convert.ToDecimal(reader["Nota"])
                                 };
                                 notasDoAluno.Add(nota);

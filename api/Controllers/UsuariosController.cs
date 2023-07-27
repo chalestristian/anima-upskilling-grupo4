@@ -154,7 +154,7 @@ namespace api.Controllers
                 .FirstOrDefault(u => u.Login == loginRequest.Login);
 
             //if (usuario == null || !VerificarSenha(loginRequest.Senha, usuario.Senha))
-            if (usuario == null)
+            if (usuario == null || loginRequest.Senha != usuario.Senha )
             {
                 return Unauthorized("Nome de usuário ou senha incorretos.");
             }
@@ -164,7 +164,7 @@ namespace api.Controllers
             return Ok(usuario);
         }
 
-        private byte[] GenerateSalt()
+  /*      private byte[] GenerateSalt()
         {
             byte[] salt = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
@@ -172,7 +172,7 @@ namespace api.Controllers
                 rng.GetBytes(salt);
             }
             return salt;
-        }
+        }*/
 
       /*  private string HashSenha(string senha, byte[] salt)
         {

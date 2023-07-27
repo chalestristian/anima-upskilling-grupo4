@@ -18,8 +18,6 @@ namespace identity
             Environment = environment;
         }
         
-        string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
@@ -42,7 +40,7 @@ namespace identity
 
             app.UseCors(x => x
                         .AllowAnyMethod()
-                        .AllowAnyOrigin()
+                        //.AllowAnyOrigin()
                         .AllowAnyHeader()
                         .SetIsOriginAllowed(origin => true) // allow any origin
                         .AllowCredentials());

@@ -25,10 +25,10 @@ namespace api.Controllers
         public ActionResult<IEnumerable<Curso>> GetCursos()
         {
             var cursos = _context.Cursos.ToList();
-            foreach (var curso in cursos)
+            /*foreach (var curso in cursos)
             {
                 curso.ModulosCurso = _context.ModulosCursos.Where(m => m.Curso.Id == curso.Id).ToList();
-            }
+            }*/
             return Ok(cursos);
         }
 

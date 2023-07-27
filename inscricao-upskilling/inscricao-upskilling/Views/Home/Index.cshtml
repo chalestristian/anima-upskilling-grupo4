@@ -1,0 +1,103 @@
+﻿@model inscricao_upskilling.Models.PessoaModel
+
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <!-- Incluindo os arquivos do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">Formulário de Cadastro</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("About", "Home", FormMethod.Post))
+                        {           
+                        <form action="/caminho-do-backend" method="post">
+                            <div class="form-group">
+                                <label for="inputNome">Nome:</label>
+                                @Html.TextBoxFor(m => m.Nome)
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCpf">CPF:</label>
+                                @Html.TextBoxFor(m => m.Cpf)
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCelular">Celular:</label>
+                                @Html.TextBoxFor(m => m.Celular)
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email:</label>
+                                @Html.TextBoxFor(m => m.Email)
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label for="inputSenha">Login:</label>
+                                @Html.TextBoxFor(m => m.Login)
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSenha">Senha:</label>
+                                @Html.PasswordFor(m => m.Senha)
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@*
+
+    @using (Html.BeginForm("About", "Home", FormMethod.Post))
+    {
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">Cadastro</th>
+        </tr>
+        <tr>
+            <td>Nome: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Nome)
+            </td>
+        </tr>
+        <tr>
+            <td>Cpf: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Cpf)
+            </td>
+        </tr>
+        <tr>
+            <td>Celular: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Celular)
+            </td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>Senha: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Senha)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+    }*@

@@ -138,12 +138,12 @@ export default {
         .catch(function (error) {
         if(error.response){window.alert("ERRO: [" + error.response.status + "] " + error.response.data)}})},
 
-      // async aguardar10Segundos() {
-      //   console.log("Início da espera...");
-      //   setTimeout(() => {
-      //   console.log("Passaram 10 segundos!");
-      //   }, 10000); 
-      // },
+      async aguardar10Segundos() {
+        console.log("Início da espera...");
+        setTimeout(() => {
+        console.log("Passaram 10 segundos!");
+        }, 10000); 
+      },
 
       async SolicitarCertificado(id: number){
         await DataService.GerarCetificado(id);

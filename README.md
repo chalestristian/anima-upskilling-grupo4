@@ -60,5 +60,6 @@ O banco de dados pode ser acessado utilizando estes dados:
 
 # MER - Modelo entidade relacionamento
 
-![MER](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/df4c9119-434a-45de-af4c-6f1771d5db40)
+![MER](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/4c40773e-d13b-4b5f-9a76-79f038643cb5)
+
 

@@ -62,4 +62,6 @@ O banco de dados pode ser acessado utilizando estes dados:
 
 ![MER](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/4c40773e-d13b-4b5f-9a76-79f038643cb5)
 
+# Vídeo Demonstração
 
+[![Watch the video](https://img.youtube.com/vi/a9tWBWlyf5c/maxresdefault.jpg)](https://youtu.be/a9tWBWlyf5c)

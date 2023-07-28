@@ -1,6 +1,6 @@
-|![foto-diego](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/b33cd5e8-192f-4d62-9590-7cf34ed7fb88)|![foto-matheus](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/55c07fdd-8f13-42c2-a589-3c98ceafce5b)|![foto-tales](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/235053be-7cd8-4ea7-b095-8d850f0358a8)|![foto-william](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/f3304da1-7b60-41eb-a8cd-fc12e3a53fb8)|
-|----------------|--------------|----------------|--------------|
-| DIEGO PEREIRA CAMPOS | DIEGOMATHEUS CHAVES FERREIRA | THALES CRISTIAN EUGENIO | WILLIAM CLEISSON DE CARVALHO |
+|![logo-dmtw](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/3574fa77-40ee-4d9e-a6b9-f00323601e3b)|![foto-diego](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/b33cd5e8-192f-4d62-9590-7cf34ed7fb88)|![foto-matheus](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/55c07fdd-8f13-42c2-a589-3c98ceafce5b)|![foto-tales](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/235053be-7cd8-4ea7-b095-8d850f0358a8)|![foto-william](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/f3304da1-7b60-41eb-a8cd-fc12e3a53fb8)|
+|----------------|----------------|--------------|----------------|--------------|
+|| DIEGO PEREIRA CAMPOS | MATHEUS CHAVES FERREIRA | THALES CRISTIAN EUGENIO | WILLIAM CLEISSON DE CARVALHO |
 
 # Objetivo do Projeto
 

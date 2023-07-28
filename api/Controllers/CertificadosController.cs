@@ -81,7 +81,7 @@ namespace api.Controllers
                 var pdfBytes = memoryStream.ToArray();
 
                 string base64Pdf = Convert.ToBase64String(pdfBytes);
-                string dataUri = "data:application/pdf;base64," + base64Pdf;
+                string dataUri = base64Pdf;
                 matricula.Certificado = dataUri;
 
                 _dbContext.SaveChanges();

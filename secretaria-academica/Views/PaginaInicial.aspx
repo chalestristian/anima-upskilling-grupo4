@@ -11,8 +11,8 @@
     <form runat="server">
         <div class="page">
             <h1>Área Administrativa</h1>
-            <p>Bem-vindo à área administrativa!
-                Selecione a opção desejada.
+            <p>Bem-vindo a área administrativa!
+                Selecione a opção desejada:
             </p>
             <a href="CadastroCurso.aspx" class="btn1">Cadastro de Curso</a>
             <a href="GestaoMatriculas.aspx" class="btn1">Gerenciar Matrículas</a>

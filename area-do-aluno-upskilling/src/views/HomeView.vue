@@ -5,7 +5,7 @@
   <v-row justify="end" >
     <v-col cols="12">
       <v-sheet align="right">
-        <v-btn elevation="20" size="large" class="btn" href="https://localhost:44354/Home">INSCREVA-SE</v-btn>
+        <v-btn elevation="20" size="large" class="btn" href="https://localhost:5700/Home">INSCREVA-SE</v-btn>
         <v-btn elevation="20" size="large" class="btn" href="/login">LOGIN</v-btn>
       </v-sheet>
     </v-col>
@@ -59,7 +59,7 @@
           <p>
             Os cursos da Upskilling são voltados para o desenvolvimento divididos
             em várias categorias entre Front-End, Back-End e UX/UI Design.
-            Uma lista com os 22 cursos disponíveis.
+            Uma lista com vários cursos disponíveis.
           </p>
         </div>
       </v-sheet>

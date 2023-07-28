@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm install esbuild@0.18.15 --save-dev
+
 RUN npm run build
 
 RUN npm install -g serve

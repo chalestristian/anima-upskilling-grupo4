@@ -22,7 +22,6 @@
         <!-- Conteúdo do curso -->
         <v-container class="py-4">
           <h2>{{ selectedModule.title }}</h2>
-          <p>{{ selectedModule.description }}</p>
           <!-- Aqui você pode colocar o conteúdo específico do módulo selecionado -->
         </v-container>
       </v-main>

@@ -124,7 +124,7 @@ namespace api.Controllers
 
         // GET: api/Matriculas/ByAlunoCurso?alunoId=1&cursoId=2
         [HttpGet("ByAlunoCurso")]
-        public ActionResult<Matricula> GetMatriculaByAlunoCurso([FromQuery] MatriculaGetModel model)
+        public ActionResult<Matricula> GetMatriculaByAlunoCurso(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -133,7 +133,7 @@ namespace api.Controllers
 
             var matricula = _context.Matriculas
                 .Include(m => m.Aluno).ThenInclude(a => a.Pessoa)
-                .Include(m => m.Curso).FirstOrDefault(m => m.Aluno.Id == model.AlunoId && m.Curso.Id == model.CursoId);
+                .Include(m => m.Curso).Where(m => m.Aluno.Id == id);
 
             if (matricula == null)
             {

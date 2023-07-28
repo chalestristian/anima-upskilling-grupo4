@@ -1,7 +1,10 @@
+import type { IAluno } from '@/interfaces/IAluno';
+import type { ICurso } from '@/interfaces/ICurso';
+
 export interface IMatricula{
     id: number;
-    alunoId: number;
-    cursoId: string;
+    aluno:  IAluno;
+    curso: ICurso;
     dataMatricula: Date;
     valorMatricula: number;
     dataConclusao: Date;

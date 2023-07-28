@@ -1,7 +1,10 @@
-export class CursosMatriculaModel{
+import type { AlunoModel } from "./AlunoModel";
+import type { CursoModel } from "./CursoModel";
+
+export class MatriculaModel{
     id!: number;
-    alunoId!: number;
-    cursoId!: string;
+    aluno!: AlunoModel;
+    curso!: CursoModel;
     dataMatricula?: Date;
     valorMatricula!: number;
     dataConclusao?: Date;

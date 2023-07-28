@@ -99,20 +99,20 @@ services:
   #   networks:
   #     - anima-network
  
-  service-aluno:
-    build:
-      context: ./area-do-aluno-upskilling
-      dockerfile: Dockerfile
-    container_name: service-aluno
-    restart: always
-    depends_on:
-      - service-postgres 
-      - service-identity 
-      - service-api
-    ports:
-      - 5800:5800 
-    networks:
-      - anima-network
+  # service-aluno:
+  #   build:
+  #     context: ./area-do-aluno-upskilling
+  #     dockerfile: Dockerfile
+  #   container_name: service-aluno
+  #   restart: always
+  #   depends_on:
+  #     - service-postgres 
+  #     - service-identity 
+  #     - service-api
+  #   ports:
+  #     - 5800:5800 
+  #   networks:
+  #     - anima-network
 
 volumes:
   postgres_data:

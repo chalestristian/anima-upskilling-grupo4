@@ -66,4 +66,7 @@ O banco de dados pode ser acessado utilizando estes dados:
 
 https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/bbfbddc2-2743-4ce0-bf61-a2f931b935d7
 
+# Testes unitários
+No projeto api.Tests executar `dotnet test`
+![Teste](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/524acdc4-4c7d-4ee4-8020-560ebab8aa0a)
 

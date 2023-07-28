@@ -41,7 +41,7 @@ namespace api.Controllers
         }
 
         // GET: api/Pessoas/12345678909
-        [HttpGet("{cpf}")]
+        [HttpGet("cpf/{cpf}")]
         public ActionResult<Pessoa> GetPessoaByCPF(string cpf)
         {
             var pessoa = _context.Pessoas.FirstOrDefault(p => p.CPF == cpf);

@@ -5,7 +5,7 @@
   <v-row justify="end" >
     <v-col cols="12">
       <v-sheet align="right">
-        <v-btn elevation="20" size="large" class="btn" href="https://localhost:5700/Home">INSCREVA-SE</v-btn>
+        <v-btn elevation="20" size="large" class="btn" href="http://localhost:5700/Home">INSCREVA-SE</v-btn>
         <v-btn elevation="20" size="large" class="btn" href="/login">LOGIN</v-btn>
       </v-sheet>
     </v-col>

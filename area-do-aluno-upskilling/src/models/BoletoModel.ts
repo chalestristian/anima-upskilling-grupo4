@@ -6,5 +6,5 @@ export class BoletoModel{
 	pagadorCpf!: string;
 	pagadorEmail!: string;
 	pagadorTelefone!: string;
-	descricao = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt ultrices nunc, ut consectetur diam dapibus et. Suspendisse viverra mollis dui, et ultricies purus varius eu. ";
+	descricao = "";
 }

@@ -1,4 +1,5 @@
 <template>  
+<button @click="logout()">LOGOUT</button>
 <h1>Meus Cursos</h1>
 
 <div class="card" v-for="matricula in matriculas" :key="matricula.id">
@@ -83,6 +84,11 @@ export default {
     
     methods: {
       
+      async logout(){
+        localStorage.clear();
+        window.location.href = "http://localhost:5173/";    
+        },
+        
       async GetAllCursos(){
         await DataService.ListarCursos()
         .then((response) => {this.cursos = response})
@@ -138,21 +144,10 @@ export default {
         .catch(function (error) {
         if(error.response){window.alert("ERRO: [" + error.response.status + "] " + error.response.data)}})},
 
-      async aguardar10Segundos() {
-        console.log("Início da espera...");
-        setTimeout(() => {
-        console.log("Passaram 10 segundos!");
-        }, 10000); 
-      },
-
+     
       async SolicitarCertificado(id: number){
-        await DataService.GerarCetificado(id);
-        this.aguardar10Segundos();
-
         await DataService.SolicitarCetificado(id);
-        this.aguardar10Segundos();
-
-        await DataService.GerarCetificado(id)
+        await DataService.GetCetificado(id)
         .then((response) => {this.certificado = response.data, console.log("certificado", response.data)})
 
         const binaryPDF = atob( this.certificado);
@@ -160,7 +155,7 @@ export default {
         
         for (let i = 0; i < binaryPDF.length; i++) {
         pdfBytes[i] = binaryPDF.charCodeAt(i);
-      }
+         }
 
       const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
       const pdfUrl = URL.createObjectURL(pdfBlob);

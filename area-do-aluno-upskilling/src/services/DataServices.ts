@@ -84,11 +84,11 @@ let Matriculas: IMatricula;
     return data;
   }
       
-  async GerarCetificado(id: number){
-    await this.autenticar();
-    let data = (await axios.post(`${API_PATH}/Certificado/GerarCertificado/${id}`))
-    return data;
-  }
+  // async GerarCetificado(id: number){
+  //   await this.autenticar();
+  //   let data = (await axios.post(`${API_PATH}/Certificado/GerarCertificado/${id}`))
+  //   return data;
+  // }
                
   async SolicitarCetificado(id: number){
     await this.autenticar();
@@ -98,7 +98,7 @@ let Matriculas: IMatricula;
 
   async GetCetificado(id: number){
     await this.autenticar();
-    let data = (await axios.post(`${API_PATH}/Certificado/GetUrlCertificado/${id}`))
+    let data = (await axios.get(`${API_PATH}/Certificado/GetUrlCertificado/${id}`))
     return data;
   } 
 }

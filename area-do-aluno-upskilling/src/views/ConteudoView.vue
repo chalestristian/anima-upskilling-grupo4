@@ -2,7 +2,7 @@
     <v-app>    
       <!-- Barra de navegação lateral -->
       <v-navigation-drawer app>
-        <a href="http://localhost:5808/dashboard"><button style="margin: 20px; padding: 5px; border: 1px solid rgb(128, 128, 128); background-color:rgb(72, 2, 186); color: white; font-weight: 500;">VOLTAR</button></a>
+        <a href="http://localhost:5800/dashboard"><button style="margin: 20px; padding: 5px; border: 1px solid rgb(128, 128, 128); background-color:rgb(72, 2, 186); color: white; font-weight: 500;">VOLTAR</button></a>
         <!-- Conteúdo da barra de navegação -->
         <!-- Coloque aqui links para diferentes módulos, aulas, etc. -->
         <v-list>

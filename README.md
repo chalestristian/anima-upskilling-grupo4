@@ -57,3 +57,8 @@ O banco de dados pode ser acessado utilizando estes dados:
 `Senha: postgres`
 
 `Banco: UpskillingGrupo4Final`
+
+# MER
+
+![MER](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/df4c9119-434a-45de-af4c-6f1771d5db40)
+

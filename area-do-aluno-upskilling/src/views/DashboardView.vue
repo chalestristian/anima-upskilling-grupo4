@@ -1,5 +1,5 @@
 <template>  
-<button @click="logout()">LOGOUT</button>
+<button @click="logout()" style="position: absolute; font: 20px; top: 30px; right: 50px; border: 4px dashed orange; padding: 5px 10px; color: orange; color: rgba(255, 0, 0, 0.707); font-weight: 700;">LOGOUT</button>
 <h1>Meus Cursos</h1>
 
 <div class="card" v-for="matricula in matriculas" :key="matricula.id">
@@ -184,7 +184,8 @@ export default {
     
 <style>
 .card {
-  margin: 50px 700px;
+  min-width: 200px;
+  margin: 50px 10%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 1rem;

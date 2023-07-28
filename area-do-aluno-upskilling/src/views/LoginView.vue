@@ -1,19 +1,18 @@
 <template>
   <v-container fluid>
-    <v-row justify="center" align="center" class="login-row">
-      <v-col cols="12" sm="8" md="4">
+    <v-row justify="center" align="center" class="login-row" >
+      <v-col cols="12" sm="8" md="4" class="content">
         <v-card>
-          <v-card-title class="headline">Login</v-card-title>
-          <v-card-text>
-            <input type="string" v-model="login.login" placeholder="login" style="border: 1px solid black;"/>
-            <input type="password" v-model="login.senha" placeholder="senha" style="border: 1px solid black;"/>
-            <v-btn color="primary" type="submit" @click="Logar">Login</v-btn>
+          <v-card-title class="headline">ENTRAR</v-card-title>
+          <v-card-text class="inputbox" style="padding: 50px; background-color: #2576c815;">
+            <input type="string" v-model="login.login" placeholder="LOGIN" style="border: 1px solid black; padding: 10px; margin: 10px 20px; font-size: 20px;font-weight: 500;"/>
+            <input type="password" v-model="login.senha" placeholder="SENHA" style="border: 1px solid black; padding: 10px; margin: 10px 20px; font-size: 20px;font-weight: 500;"/>
+            <v-btn color="rgba(155, 229, 206, 0.847)" style="padding: 15px; margin-bottom: 13px; padding-bottom: 30px;" type="submit" @click="Logar">ENTRAR</v-btn>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
   </v-container>
-
 </template>
 
 <script lang="ts">
@@ -42,11 +41,9 @@ data(){
   pessoa,
   usuario,
   login,
-
   alunoStorage,
   pessoaStorage,
   usuarioStorage,
-
   }
 },
 
@@ -76,10 +73,23 @@ mounted() {
 }
 
 </script>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
-<style>
+
 .login-row {
   height: 100vh;
 }
-
+.headline{
+  font-family: 'Monoton', cursive;
+  font-size: 1em;
+  color: rgb(111, 111, 111);
+  font-family: 'Black Ops One', cursive;
+}
+.content{
+  background-color: rgba(10, 68, 112, 0.661);
+}
+.inputbox{
+  padding: 500px 10px;
+}
 </style>

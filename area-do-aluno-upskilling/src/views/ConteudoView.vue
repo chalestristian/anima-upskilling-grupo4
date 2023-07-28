@@ -1,7 +1,8 @@
 <template>
-    <v-app>
+    <v-app>    
       <!-- Barra de navegação lateral -->
       <v-navigation-drawer app>
+        <a href="http://localhost:5808/dashboard"><button style="margin: 20px; padding: 5px; border: 1px solid rgb(128, 128, 128); background-color:rgb(72, 2, 186); color: white; font-weight: 500;">VOLTAR</button></a>
         <!-- Conteúdo da barra de navegação -->
         <!-- Coloque aqui links para diferentes módulos, aulas, etc. -->
         <v-list>
@@ -16,7 +17,7 @@
         <!-- Cabeçalho da página -->
         <v-app-bar app color="primary">
           <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-          <v-toolbar-title>Curso de Exemplo</v-toolbar-title>
+          <v-toolbar-title>Curso Online</v-toolbar-title>
         </v-app-bar>
   
         <!-- Conteúdo do curso -->

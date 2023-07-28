@@ -88,7 +88,7 @@ export default {
         localStorage.clear();
         window.location.href = "http://localhost:5173/";    
         },
-        
+
       async GetAllCursos(){
         await DataService.ListarCursos()
         .then((response) => {this.cursos = response})
@@ -147,10 +147,13 @@ export default {
      
       async SolicitarCertificado(id: number){
         await DataService.SolicitarCetificado(id);
-        await DataService.GetCetificado(id)
-        .then((response) => {this.certificado = response.data, console.log("certificado", response.data)})
 
-        const binaryPDF = atob( this.certificado);
+        let  certificado: string;
+      async function miFuncion() {
+        await DataService.GetCetificado(id)
+        .then((response) => {certificado = response.data, console.log("certificado", response.data)})
+
+        const binaryPDF = atob(certificado);
         const pdfBytes = new Uint8Array(binaryPDF.length);
         
         for (let i = 0; i < binaryPDF.length; i++) {
@@ -160,6 +163,12 @@ export default {
       const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
       const pdfUrl = URL.createObjectURL(pdfBlob);
       window.open(pdfUrl);  
+        }
+        setTimeout(miFuncion, 1000);
+
+
+
+       
     },
   },
 

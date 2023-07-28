@@ -64,4 +64,6 @@ O banco de dados pode ser acessado utilizando estes dados:
 
 # Vídeo Demonstração
 
-[![Watch the video](https://img.youtube.com/vi/a9tWBWlyf5c/maxresdefault.jpg)](https://youtu.be/a9tWBWlyf5c)
+https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/bbfbddc2-2743-4ce0-bf61-a2f931b935d7
+
+

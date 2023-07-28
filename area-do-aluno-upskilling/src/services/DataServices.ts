@@ -15,6 +15,9 @@ import type { LoginModel } from '@/models/LoginModel';
 import type { ILogin } from '@/interfaces/ILogin';
 import type { ICurso } from '@/interfaces/ICurso';
 import type { IMatricula } from '@/interfaces/IMatricula';
+import type { IBoleto } from '@/interfaces/IPessoa copy';
+import type { BoletoModel } from '@/models/BoletoModel';
+
 
 
 let Aluno: IAluno;
@@ -23,6 +26,7 @@ let Usuario: IUsuario;
 let Login: ILogin;
 let Cursos: ICurso;
 let Matriculas: IMatricula;
+let Boleto : IBoleto;
  class DataService {
 
   //TA GERANDO TOKEN A CADA REQUISIÇÃO - MELHORAR ISSO DEPOIS.
@@ -75,14 +79,36 @@ let Matriculas: IMatricula;
  
      async CursosMatriculados(id: number) {
       await this.autenticar();
-      var data = await axios.get<Array<typeof Matriculas>>(`${API_PATH}/Matriculas/${id}`);
-      return data.data;
+      var data = (await axios.get<Array<typeof Matriculas>>(`${API_PATH}/Matriculas/ByAlunoCurso?id=${id}`));
+      return data;
      }
- 
 
-  // ListarPessoas() {return axios.get<typeof Pessoas>(`${API_PATH}/Pessoas`);}
+     async GerarBoleto(boleto: IBoleto) {
+      await this.autenticar();
+      var data = (await axios.get<Array<typeof Matriculas>>(`${API_PATH}/Matriculas/ByAlunoCurso?id=${boleto}`));
+      return data;
+     }
+
+     async Pdf(boleto: BoletoModel){
+      
+      let data = await axios.post(`http://localhost:5400/api/Boleto`,{
+        dataVencimento:`${boleto.dataVencimento}`,valor:`${boleto.valor}`, 
+        nossoNumero:`${boleto.nossoNumero}`,pagadorNome:`${boleto.pagadorNome}`,
+        pagadorEmail:`${boleto.pagadorEmail}`,pagadorTelefone:`${boleto.pagadorTelefone}`,
+        descricao:`${boleto.descricao}`})
+      
+        return data;
+      }       
+      async ListarPessoa(id: number) {return axios.get<typeof Pessoa>(`${API_PATH}/Pessoas/${id}`);}
+
+        
+    }
+
+ 
+      
+     
   // ListarAlunos() {return axios.get<typeof Alunos>(`${API_PATH}/Alunos`);}
-}
+
 
 export default new DataService();
 

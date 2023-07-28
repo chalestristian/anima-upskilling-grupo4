@@ -4,7 +4,7 @@
 
 # Objetivo do Projeto
 
-Este projeto é um trabalho realizado em grupo para conclusão de treinamento Upskilling Gama Academy + Ânima. O objetivo era desenvolver várias aplicações usando variadas versões de frameworks do Dotnet, simulando aplicações modernas e legadas, comunicando entre si. A arquitetura abaixo é uma arquitetura proposta pelo grupo para conseguir aplicar todos os conceitos e ferramentas aprendidas durante o treinamento.
+Este projeto é um trabalho realizado em grupo para conclusão de treinamento Upskilling Gama Academy + Ânima. O objetivo era desenvolver aplicações usando variadas versões de frameworks do Dotnet, simulando aplicações modernas e legadas, comunicando entre si. A arquitetura abaixo é uma arquitetura proposta pelo grupo para conseguir aplicar todos os conceitos e ferramentas aprendidas durante o treinamento.
 
 # Arquitetura da comunicação entre os serviços
 ![arquitetura_aplicacao](https://github.com/williamcc89/anima-upskilling-grupo4/assets/2452619/5b548ce1-8ddb-40f7-8379-d91cf3713a12)
